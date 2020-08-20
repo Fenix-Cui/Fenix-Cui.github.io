@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>7th.异常处理 | Fenix&#39;s Blog</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Fenix's Blog">
+    <meta name="author" content="Fenix-Cui">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Fenix&#39;s Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">Fenix-Cui</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">Fenix</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/JavaScript学习笔记/" class="animsition-link">JavaScript学习笔记<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Java笔记/Java多线程笔记/" class="animsition-link">Java多线程笔记<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java学习笔记/" class="animsition-link">Java学习笔记<small>(17)</small></a></li>
+				    
+				    <li><a href="/categories/Java总结笔记/" class="animsition-link">Java总结笔记<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Java笔记/" class="animsition-link">Java笔记<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="https://www.baidu.com/" target="_blank" rel="noopener" class="animsition-link">Baidu</a></li>
+                    
+                    <li><a href="https://www.google.com/" target="_blank" rel="noopener" class="animsition-link">Google</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Fenix's Blog</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/Fenix-Cui/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2020-03-03T04:47:55.000Z" itemprop="datePublished">
+          2020-03-03
+      </time>
+    
+</span>
+                <h1>7th.异常处理</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h2 id="01-Java的异常"><a href="#01-Java的异常" class="headerlink" title="01.Java的异常"></a>01.Java的异常</h2><p>调用方获知调用失败的信息：  </p>
+<ul>
+<li>约定返回错误码</li>
+<li>在语言层面上提供一个异常处理机制  </li>
+</ul>
+<p><img src="1.png" alt=""><br>Throwable分为Error和Exception:  </p>
+<ul>
+<li>Error表示严重的错误，程序自己解决不了  </li>
+<li>Exception表示运行时的错误，它可以被捕获并处理<br>其中Exception又分为两大类：  </li>
+<li><ul>
+<li>RuntimeException以及它的子类  </li>
+</ul>
+</li>
+<li><ul>
+<li>非RuntimeException(包括IOException、ReflectiveOperationException等)  </li>
+</ul>
+</li>
+</ul>
+<p>Java规定:  </p>
+<ul>
+<li>必须捕获的异常，包括Exception及其子类，但是不包括RuntimeException及其子类，这种类型的异常成为Checked Exception  </li>
+<li>不需要捕获的异常，包括Error及其子类，RuntimeException及其子类  </li>
+</ul>
+<p>捕获异常使用try-catch语句  </p>
+<ul>
+<li>try{…} ← 可能发生异常的代码  </li>
+<li>catch{…} ← 捕获对应的Exception及其子类  </li>
+</ul>
+<p>像<code>UnsupportedEncodingException</code>这样的<code>非RuntimeException(Checked exception)</code>，必须被捕获，如果不捕获编译器会报错,RuntimeException无需强制捕获<br>使用多catch语句的时候要注意子类必须写在前面，因为多catch语句只能匹配一次<br>try-catch-finally可以保证最后无论是否发生异常都会运行finally<br>在某些情况，可以没有catch，只使用try-finally<br>如果某些异常的处理逻辑相同，但是异常本身不存在继承关系，那就要编写多个catch子句，因为处理IOEception和NumberFormatException的代码是相同的，所以我们可以把它两用 <code>|</code> 合并到一起  </p>
+<hr>
+<p>Learn From: <a href="https://www.liaoxuefeng.com/wiki/1252599548343744/1264734349295520" target="_blank" rel="noopener">廖雪峰java教程</a></p>
+<hr>
+<h2 id="异常-exception"><a href="#异常-exception" class="headerlink" title="异常(exception)"></a>异常(exception)</h2><p>又称例外、差错、违例<br>对应着Java运行错误处理机制<br>Java中处理异常</p>
+<ul>
+<li>抛出(trhrow)异常</li>
+<li>运行时系统在调用栈中查找<ul>
+<li>从生成异常的方法开始进行回溯，知道找到：<br>捕获(catch)异常代码</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    语句组;</span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类名 异常形式参数名)&#123;</span><br><span class="line">    异常处理语句组;</span><br><span class="line">&#125;<span class="keyword">catch</span>(异常类名 异常形式参数名)&#123;</span><br><span class="line">    异常处理语句组;</span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">    异常处理语句组;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，catch语句可以0至多个，可以没有finally语句  </p>
+<h3 id="异常的分类"><a href="#异常的分类" class="headerlink" title="异常的分类"></a>异常的分类</h3><p>Throwable</p>
+<ul>
+<li>Error: JVM的错误</li>
+<li>Exception: 异常</li>
+</ul>
+<p>一般所说的异常是指Exception及其子类  </p>
+<h3 id="多异常处理"><a href="#多异常处理" class="headerlink" title="多异常处理"></a>多异常处理</h3><p>子类异常要排在父类异常的前面<br>finally语句</p>
+<ul>
+<li>无论是否有异常都要执行<ul>
+<li>即使其中有<code>break</code>，<code>return</code>等语句</li>
+<li>在编译时，finally部分代码生成了多遍</li>
+</ul>
+</li>
+</ul>
+<h3 id="受检的异常"><a href="#受检的异常" class="headerlink" title="受检的异常"></a>受检的异常</h3><p>Exception分两种</p>
+<ul>
+<li>RuntimeException及其子类，可以不明确处理</li>
+<li>否则，称为受检的异常(checked Exception)</li>
+</ul>
+<p>受检的异常，要求明确进行语法处理</p>
+<ul>
+<li>要么捕获(catch)</li>
+<li>要么抛出(throws)：在方法的签名后面用throws xxxx来声明：<ul>
+<li>在子类中，如果要覆盖父类的一个方法，若父类中的方法声明了throws异常，则子类的方法也可以throws异常</li>
+<li>可以抛出子类异常(更具体的异常)，单不能抛出更一般的异常</li>
+</ul>
+</li>
+</ul>
+<h2 id="创建用户自定义异常类"><a href="#创建用户自定义异常类" class="headerlink" title="创建用户自定义异常类"></a>创建用户自定义异常类</h2><p>创建用户自定义异常时：</p>
+<ul>
+<li>继承自Exception类或某个子Exception类</li>
+<li>定义属性和方法，或重载父类的方法<h3 id="重抛异常及异常链接"><a href="#重抛异常及异常链接" class="headerlink" title="重抛异常及异常链接"></a>重抛异常及异常链接</h3>对于异常，不仅要进行捕获处理，有时候还需要将此异常进一步传递给调用者，以便让调用者也能感受到这种异常。这时可以在catch语句块或者finally语句块中采取以下三种方式：</li>
+<li>将当前捕获的异常再次抛出：<ul>
+<li><code>throw e;</code></li>
+</ul>
+</li>
+<li>重新生成一个异常，并抛出：<ul>
+<li><code>throw new Exception(&quot;some message&quot;);</code></li>
+</ul>
+</li>
+<li>重新生成并抛出一个新异常，该一场中包含了当前异常的信息，如：<ul>
+<li><code>throw new Exception(&quot;some message&quot;, e);</code></li>
+<li>可用<code>e.getCause()</code>来得到内部异常</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="断言-assertion"><a href="#断言-assertion" class="headerlink" title="断言(assertion)"></a>断言(assertion)</h2><p>格式是：</p>
+<ul>
+<li>assert 表达式;</li>
+<li>assert 表达式: message;</li>
+</ul>
+<p>在调试程序时，如果表达式不为true，则程序会产生异常，并输出相关的错误信息。</p>
+<h3 id="程序的测试及JUnit"><a href="#程序的测试及JUnit" class="headerlink" title="程序的测试及JUnit"></a>程序的测试及JUnit</h3><p>程序的修改是经常要进行的过程，必须保证程序在修改后其结果仍然是正确的。<br>在编写程序代码的同时，还编写测试代码来判断这些程序是否正确。<br>这个过程称为”测试驱动”的开发过程。<br>从而保证了代码的质量，减少了后期的查错与调试的时间，所以实际上它提高了程序的开发效率。  </p>
+<h2 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h2><p>在Java的测试过程，经常使用JUnit框架。<br>现在大多数Java集成开发工具都提供了对JUnit的支持。  </p>
+<h2 id="测试函数"><a href="#测试函数" class="headerlink" title="测试函数"></a>测试函数</h2><p>@Test来标注测试函数<br>在测试中常用的语句如下：</p>
+<ul>
+<li>fail(message);//表示程序出错</li>
+<li>assertEqauls(value1, value2);//表示程序要保证两个参数要相等</li>
+<li>asserNull(value);//表示参数要为null</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSum2</span><span class="params">()</span></span>&#123;</span><br><span class="line">    HelloWorld a = <span class="keyword">new</span> HelloWorld();</span><br><span class="line">    assertEquals(a.sum(<span class="number">0</span>, <span class="number">100</span>),<span class="number">100</span>);</span><br><span class="line">    <span class="comment">//fail("Not yet implemented");</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="程序中的错误"><a href="#程序中的错误" class="headerlink" title="程序中的错误"></a>程序中的错误</h2><p>程序中的错误通常可以分为三大类：</p>
+<ul>
+<li>语法错误(Syntax error)<ul>
+<li>编辑、编译器发现</li>
+</ul>
+</li>
+<li>运行错误(Runtime error)<ul>
+<li>异常处理机制</li>
+</ul>
+</li>
+<li>逻辑错误(Logic error)<ul>
+<li>调试(debug)、单元测试(unit test)</li>
+</ul>
+</li>
+</ul>
+<p>程序的调试(debug)有三种手段：</p>
+<ol>
+<li>断点(breakpoint)</li>
+<li>跟踪(trace)</li>
+<li>监视(watch)</li>
+</ol>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2020/03/05/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/8th-%E5%8F%8D%E5%B0%84/" style="float: left;">
+        ← 8th.反射
+    </a>
+    
+    
+    <a class="pull-right" href="/2020/03/02/Js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2nd-HTML%E6%A0%87%E7%AD%BE/">
+        2nd.HTML标签 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Fenix-Cui. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" target="_blank" rel="noopener" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/Fenix-Cui/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

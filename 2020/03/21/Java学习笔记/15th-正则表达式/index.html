@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>15th.正则表达式 | Fenix&#39;s Blog</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Fenix's Blog">
+    <meta name="author" content="Fenix-Cui">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Fenix&#39;s Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">Fenix-Cui</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">Fenix</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/JavaScript学习笔记/" class="animsition-link">JavaScript学习笔记<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Java笔记/Java多线程笔记/" class="animsition-link">Java多线程笔记<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java学习笔记/" class="animsition-link">Java学习笔记<small>(17)</small></a></li>
+				    
+				    <li><a href="/categories/Java总结笔记/" class="animsition-link">Java总结笔记<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Java笔记/" class="animsition-link">Java笔记<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="https://www.baidu.com/" target="_blank" rel="noopener" class="animsition-link">Baidu</a></li>
+                    
+                    <li><a href="https://www.google.com/" target="_blank" rel="noopener" class="animsition-link">Google</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Fenix's Blog</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/Fenix-Cui/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2020-03-21T05:05:22.000Z" itemprop="datePublished">
+          2020-03-21
+      </time>
+    
+</span>
+                <h1>15th.正则表达式</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h2 id="正则表达式-Regular-Expressions"><a href="#正则表达式-Regular-Expressions" class="headerlink" title="正则表达式(Regular Expressions)"></a>正则表达式(Regular Expressions)</h2><p>正则表达式也叫通配符。<br>它实际上是用来匹配字符串的一种模式，是文本处理中常用的工具。<br>主要的应用包括：匹配验证、分割、查找、替换<br>正则表达式的写法：</p>
+<ul>
+<li>字符{数量}位置</li>
+<li>如：[0-9]{2, 4}\b</li>
+<li>可以匹配类似：123， 1988， 2015， 16等类似数字<br>正则表达式的基本元素：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>含义</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.</code></td>
+<td>代表一个字符的通配符</td>
+<td>能和回车之外的任何字符相匹配</td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>字符集</td>
+<td>能和括号内的任何一个字符相匹配。方括号内也可以表示一个<br/>范围，用<code>&quot;-&quot;</code>符号将其实和末尾字符区分开来，例如：[0-9]</td>
+</tr>
+<tr>
+<td><code>[^]</code></td>
+<td>排斥性字符集</td>
+<td>和集合之外的任意字符匹配</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>起始位置</td>
+<td>定位到一行的起始处并向后匹配</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>结束位置</td>
+<td>定位到一行的结尾处并向前匹配</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>单词边界</td>
+<td></td>
+</tr>
+<tr>
+<td><code>\B</code></td>
+<td>非单词边界</td>
+<td></td>
+</tr>
+<tr>
+<td><code>()</code></td>
+<td>组</td>
+<td>按照子表达式进行分组</td>
+</tr>
+<tr>
+<td>`</td>
+<td>`</td>
+<td>或</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>转义</td>
+<td>匹配反斜线符号之后的字符，所以可以匹配一些特殊符号，例如$</td>
+</tr>
+</tbody></table>
+<p>关于数量：</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>*</code></td>
+<td>零个或多个</td>
+<td>匹配表达式首项字符的零个或多个副本</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>一个或多个</td>
+<td>匹配表达式首项字符的一个或多个副本</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>零个或一个</td>
+<td>匹配表达式首项字符的一个或零个副本</td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td>重复</td>
+<td>匹配表达式首项字符的n个副本</td>
+</tr>
+</tbody></table>
+<p>关于字符：</p>
+<ul>
+<li><code>\d</code>表示数字，相当于[0-9]</li>
+<li><code>\D</code>表示非数字，相当于[^0-9]</li>
+<li><code>\s</code>表示空白符，相当于[\t\n\x0B\f\r]</li>
+<li><code>\S</code>表示非空白符，相当于[^\s]</li>
+<li><code>\w</code>表示单词字符，相当于[a-zA-z_0-9]</li>
+<li><code>\W</code>表示非单词字符，相当于[^\w]</li>
+</ul>
+<p>QRe，正则表达式测试工具<br>或<a href="https://tool.oschina.net/regex" target="_blank" rel="noopener">正则表达式在线测试工具</a>  </p>
+<hr>
+<h2 id="Pattern类"><a href="#Pattern类" class="headerlink" title="Pattern类"></a>Pattern类</h2><p>java.util.regex包：<br>主要的类Pattern类，Matcher类<br>应用之一：分割RegexSplitter.java<br>如：对以逗号和/或空格分割的输入字符串进行切分</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Pattern p = Pattern.compile(<span class="string">"[,\\s]+"</span>);</span><br><span class="line">String[] result = p.split(<span class="string">"one, two, three, four, five"</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;result.length; i++)&#123;</span><br><span class="line">    System.out.println(result[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>应用之二：匹配验证RegexEmailValidate.java<br>判断一个email地址是否合法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String pattern = <span class="string">"^[^@]+@[\\w]+(\\.[\\w]+)*$"</span>;</span><br><span class="line">String email = <span class="string">"dstang2000@263.net;</span></span><br><span class="line"><span class="string">boolean ok = Pattern.matches(pattern, email);</span></span><br></pre></td></tr></table></figure>
+<p>例中的模式要求email地址再@的前面有多个非@的字符，在@之后，需要一些由点(.)隔开的一些单词字符(\w)。要注意、在java的源程序的字符串中要写成\</p>
+<h3 id="Matcher类"><a href="#Matcher类" class="headerlink" title="Matcher类"></a>Matcher类</h3><p>应用之三：查找替换RegexReplacement.java<br>Matcher类：通过调用某个模式(Pattern对象)的matcher方法可以得到Matcher对象<br>Matcher类的方法：</p>
+<ul>
+<li>find方法将扫描输入序列，寻找下一个与模式匹配的地方</li>
+<li>appendReplacement方法</li>
+</ul>
+<p>Matcher中的group：</p>
+<ul>
+<li>所谓group(分组)，是指正则表达式中一对圆括号括起来的一部分</li>
+<li>group()或group()表示整个匹配项，group(1)、group(2)…表示各个分组</li>
+<li>替换时，$0表示整个匹配项，$1、$2…表示各个分组(圆括号)</li>
+</ul>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2020/03/21/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/16th-%E5%8A%A0%E5%AF%86%E4%B8%8E%E5%AE%89%E5%85%A8/" style="float: left;">
+        ← 16th.加密与安全
+    </a>
+    
+    
+    <a class="pull-right" href="/2020/03/21/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/14th-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+        14th.单元测试 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Fenix-Cui. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" target="_blank" rel="noopener" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/Fenix-Cui/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

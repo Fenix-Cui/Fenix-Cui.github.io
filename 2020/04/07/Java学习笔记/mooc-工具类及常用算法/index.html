@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>mooc-工具类及常用算法 | Fenix&#39;s Blog</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Fenix's Blog">
+    <meta name="author" content="Fenix-Cui">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Fenix&#39;s Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">Fenix-Cui</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">Fenix</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/JavaScript学习笔记/" class="animsition-link">JavaScript学习笔记<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Java笔记/Java多线程笔记/" class="animsition-link">Java多线程笔记<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java学习笔记/" class="animsition-link">Java学习笔记<small>(17)</small></a></li>
+				    
+				    <li><a href="/categories/Java总结笔记/" class="animsition-link">Java总结笔记<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Java笔记/" class="animsition-link">Java笔记<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="https://www.baidu.com/" target="_blank" rel="noopener" class="animsition-link">Baidu</a></li>
+                    
+                    <li><a href="https://www.google.com/" target="_blank" rel="noopener" class="animsition-link">Google</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Fenix's Blog</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/Fenix-Cui/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2020-04-07T00:42:43.000Z" itemprop="datePublished">
+          2020-04-07
+      </time>
+    
+</span>
+                <h1>mooc-工具类及常用算法</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h2 id="Java基础类库"><a href="#Java基础类库" class="headerlink" title="Java基础类库"></a>Java基础类库</h2><p>java.lang: Java语言的核心类库</p>
+<ul>
+<li>Java是自动导入java.lang.*的</li>
+</ul>
+<p>java.util: 实用工具<br>java.io: 标准输入/输出类库<br>java.awt, java.swing: 图形用户界面(GUI)的类库<br>java.net: 网络功能的类库<br>java.sql: 数据库访问的类库</p>
+<hr>
+<h2 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h2><p>Object类是所有类的直接或间接父类，这让所有的类有了一致性。</p>
+<h3 id="equals"><a href="#equals" class="headerlink" title="equals()"></a>equals()</h3><p>“==”是引用是否相等<br>“equals”是内容(含义)相等</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Integer one = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">Integer anotherOne = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">if</span>(one==anotherOne)&#123;...&#125;<span class="comment">//false</span></span><br><span class="line"><span class="keyword">if</span>(one.equals(anotherOne))&#123;...&#125;<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>如果覆盖equals()方法，一般也要覆盖hashCode()方法  </p>
+<h3 id="getClass"><a href="#getClass" class="headerlink" title="getClass()"></a>getClass()</h3><p>getClass()方法是final方法，它不能被重载<br>它返回一个对象在运行时所对应的类的表示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintClassName</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"The Object's class is "</span> + obj.getClass().getName());</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">Object <span class="title">creatnewInstanceOf</span><span class="params">(object obj)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> obj.getClass().newinstance();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString()"></a>toString()</h3><p>主要用来返回对象的字符串表示<br>常用于显示<code>System.out.println(person);</code><br>另外，用于字符串的加号<code>&quot;current person is &quot; + person</code><br>通过重载toString()方法，可以适当地显示对象的信息以进行调试</p>
+<h3 id="finalize"><a href="#finalize" class="headerlink" title="finalize()"></a>finalize()</h3><p>用于在垃圾收集前清除对象</p>
+<h3 id="notify-notifyAll-wait"><a href="#notify-notifyAll-wait" class="headerlink" title="notify(), notifyAll(), wait()"></a>notify(), notifyAll(), wait()</h3><p>与线程相关，pass</p>
+<hr>
+<h2 id="基本数据类型的包装类"><a href="#基本数据类型的包装类" class="headerlink" title="基本数据类型的包装类"></a>基本数据类型的包装类</h2><p>Java的基本数据类型用于定义简单的变量和属性将十分方便，但为了与面向对象的环境一致，Java中提供了基本数据类型的包装类(wrapper)，它们是这些基本类型的面向对象的代表。<br>与8种基本数据类型相对应，基本数据类型的包装类也有8中，分别是：</p>
+<ul>
+<li>Character, Byte, Short, Integer, Long, Float, Double, Boolean</li>
+</ul>
+<h3 id="包装类的特点"><a href="#包装类的特点" class="headerlink" title="包装类的特点"></a>包装类的特点</h3><ol>
+<li>这些类都提供了一些常数<ul>
+<li>如Integer.MAX_VALUE(整数最大值)，Double.NaN(非数字)，Double.POSITIVE_INFINITY(正无穷)等</li>
+</ul>
+</li>
+<li>提供了valueOf(String)，toString()<ul>
+<li>用于从字符串转换及或转换成字符串</li>
+</ul>
+</li>
+<li>通过xxxxValue()方法可以得到所包装的值<ul>
+<li>Integer对象的intValue()方法</li>
+</ul>
+</li>
+<li>对象中所包装的值是不可改变的(immutable)<ul>
+<li>要改变对象中的值只有重新生成新的对象</li>
+</ul>
+</li>
+<li>toString()，equals()等方法进行了覆盖</li>
+</ol>
+<p>出了上述特点外，有的类还提供了一些使用的方法以方便操作</p>
+<ul>
+<li>例如，Double类就提供了parseDouble(), max, min方法等</li>
+</ul>
+<h3 id="包装与拆包"><a href="#包装与拆包" class="headerlink" title="包装与拆包"></a>包装与拆包</h3><p>Integer I = 5;</p>
+<ul>
+<li>即 <code>I = Integer.valueof(5);</code></li>
+</ul>
+<p>int i = I;</p>
+<ul>
+<li>即 <code>I = I.intValue();</code></li>
+</ul>
+<hr>
+<h2 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h2><p>Math类用来完成一些常用的数学运算<br>|Math类代码|注释|<br>|:——–|:—|<br>|<code>public final static double E;</code>|//数学常量e|<br>|<code>public final static double PI;</code>|//圆周率常量|<br>|<code>public static double abs(double a);</code>|//绝对值|<br>|<code>public static double exp(double a);</code>|//参数次幂|<br>|<code>public static double floor(double a);</code>|//不大于参数的最大整数|<br>|<code>public static double IEEE remainder(double f1, double f2);</code>|//求余|<br>|<code>public static double log(double a);</code>|//自然对数|<br>|<code>public static double max(double a, double b);</code>|//最大值|<br>|<code>public static double min(float a, float b);</code>|//最小值|<br>|<code>public static double pow(double a, double b);</code>|//乘方|<br>|<code>public static double random();;</code>|//产生0和1(不含1)之间的伪随机数|<br>|<code>public static double rint(double a);</code>|//四舍五入|<br>|<code>public static double sqrt(double a);</code>|//平方根|<br>|<code>public static double sin(double a);</code>|//正弦|<br>|<code>public static double cos(double a);</code>|//余弦|<br>|<code>public static double tan(double a);</code>|//正切|<br>|<code>public static double asin(double a);</code>|//反正弦|<br>|<code>public static double acos(double a);</code>|//反余弦|<br>|<code>public static double atan(double a);</code>|//反正切|</p>
+<hr>
+<h2 id="System类"><a href="#System类" class="headerlink" title="System类"></a>System类</h2><p>在Java中，系统属性可以通过环境变量来获得</p>
+<ul>
+<li>System.getProperty(String name)方法获得特定的系统属性值</li>
+<li>System.getProperties()方法获得一个Properties类的对象，其中包含了所有可用的系统属性信息</li>
+</ul>
+<p>在命令行运行Java程序时可使用<code>-D选项</code>添加新的系统属性</p>
+<ul>
+<li>如 java -Dvar = value MyProg</li>
+</ul>
+<hr>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>字符串可以分为两大类：</p>
+<ul>
+<li>String类：创建之后不会再做修改和变动，即immutable</li>
+<li>Stringbuffer、StringBuilder类<ul>
+<li>创建之后允许再做修改和变化</li>
+<li>其中StringBuilder是JDK 1.5增加的，它是非线程安全的</li>
+</ul>
+</li>
+</ul>
+<p>注意：在循环中使用String的+=可能会带来效率问题</p>
+<h2 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h2><p>String类对象保存不可修改(immutable)的Unicode字符序列</p>
+<ul>
+<li>String类的下述方法能创建并返回一个新的String对象实例：concat, replace, replaceAll, subString, toLowerCase, toUpperCase, trim, toString.</li>
+<li>查找：endsWith, startsWith, indexOf, lastIndexOf</li>
+<li>比较：equals, equalsIgnoreCase</li>
+<li>字符及长度：charAt, length</li>
+</ul>
+<p>Jdk1.5增加了format函数：<br>%1$,8.5f—%序号$标识 宽度及精度 转换方式<br>序号：<code>1</code><br>标识：<code>,</code>(表示千分位)<br>宽度及精度：<code>8.5</code><br>转换方式：<code>f</code>  </p>
+<h3 id="字符串常量"><a href="#字符串常量" class="headerlink" title="字符串常量"></a>字符串常量</h3><p>除了immutable特点外，还要注意String常量的内部化(interned)问题<br>即这样字符串常量是合同的(是指向同一个引用的)<br>以保证”abc” == “abc”<br>但是”abc” != new String(“abc”)</p>
+<h3 id="StringBuffer类"><a href="#StringBuffer类" class="headerlink" title="StringBuffer类"></a>StringBuffer类</h3><p>StringBuffer类对象保存可修改的Unicode字符序列：<br>StringBuilder类似，它效率更高，不考虑线程安全性<br>构造方法</p>
+<ul>
+<li>StringBuffer()</li>
+<li>StringBuffer(int capacity)</li>
+<li>StringBuffer(String initialString)</li>
+</ul>
+<p>实现修改操作的方法：<code>append, insert, reverse, setCharAt, setLength</code></p>
+<h3 id="字符串的分割"><a href="#字符串的分割" class="headerlink" title="字符串的分割"></a>字符串的分割</h3><p>java.util.StringToken类提供了对字符串进行分割的功能。<br>构造：<code>StringTokenizer(String str, String delim);</code><br>该类的重要方法有：</p>
+<ul>
+<li><code>public int countTokens();//分割串的个数</code></li>
+<li><code>public boolean hasMoreTokens();//是否还有分割串</code></li>
+<li><code>public String nextToken();//得到下一分割串</code></li>
+</ul>
+<p>注：String类的matches, replaceAll, split可以使用正则表达式</p>
+<hr>
+<h2 id="日期类"><a href="#日期类" class="headerlink" title="日期类"></a>日期类</h2><p>Calendar:</p>
+<ul>
+<li>得到一个实例 <code>Calendar.getInstance()</code>//Lovale.ZH</li>
+<li><code>.get(DAY_OF_MONTH)</code>|<code>.getDisplayName(DAY_OF_WEEK)</code></li>
+<li><code>.set</code>|<code>.add(HOUR, 1)</code>|<code>.roll(MONTH, 5)</code></li>
+<li><code>.setTime(date)</code>|<code>.getTime()</code></li>
+</ul>
+<p>Date:</p>
+<ul>
+<li><code>new Date()</code>|<code>new Date(System.currentTimeMillis())</code></li>
+<li><code>.setTime(long)</code>|<code>.getTime()</code></li>
+</ul>
+<p>SimpleDateFormat(“yyyy-MM-dd HH:mm:ss”):</p>
+<ul>
+<li><code>.format</code>|<code>.parse</code></li>
+</ul>
+<h3 id="Java8中的time-api"><a href="#Java8中的time-api" class="headerlink" title="Java8中的time api"></a>Java8中的time api</h3><p><code>java.time.*</code><br><code>java.time.format.*</code><br>|主要的类||<br>|-|-|<br>|Instant|时刻|<br>|Clock|时区|<br>|Duration|时间段|<br>||DateTimeFormatter|<br>|常用的类|<code>LocalDateTime</code>|<br>|<code>LocalDate</code>|<code>LocalTime</code>|<br>|方法|<code>.of</code> <code>.parse</code> <code>.format</code>|<br>| <code>.plus</code>|<code>.minus</code>|<br>||</p>
+<hr>
+<h2 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h2><h3 id="Collection-API"><a href="#Collection-API" class="headerlink" title="Collection API"></a>Collection API</h3><p>Collection API提供”集合” “收集”的功能，并包含一系列的接口和类<br>Collection API包含三大类：</p>
+<ul>
+<li>Collection接口：有两个子接口<ul>
+<li>List: (Collection的子接口)记录元素的保存顺序，且允许有重复元素</li>
+<li>Set: (Collection的子接口)不记录元素的保存顺序，且不允许有重复元素</li>
+</ul>
+</li>
+<li>Map接口，即映射<ul>
+<li>键-值对(key-value pair)的集合</li>
+</ul>
+</li>
+</ul>
+<p>Collection接口：<br><img src="01.png" alt="Collection接口"><br>Collection层次结构：<br><img src="02.png" alt="Collection层次结构">  </p>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>List接口：线性表 (linear list)</p>
+<ul>
+<li>主要的实现类是ArrayList.LinkedList，以及早期的Vector</li>
+</ul>
+<p>List接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">Collection</span>&lt;<span class="title">E</span>&gt;</span>&#123;</span><br><span class="line">    <span class="function">E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">    <span class="function">E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span></span>;</span><br><span class="line">    <span class="function">E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(Object o)</span></span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>迭代器Iterator(所有的Collection都能产生)</p>
+<ul>
+<li>Iterator iterator = iterable.iterator();</li>
+<li>while(iterator.hasNext())</li>
+<li>doSomething(iterator.next());</li>
+</ul>
+<p>在JDK1.5以后，增强的for语句(enhanced for)或者叫for-each<br><code>for(Element e: list) doSomething(e);</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Photo photo: album)&#123;</span><br><span class="line">    System.out.println(photo.toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译器生成了Iterator的while(hasNext()){…next()}</p>
+<hr>
+<h2 id="集合-1"><a href="#集合-1" class="headerlink" title="集合"></a>集合</h2><h3 id="Stack-栈"><a href="#Stack-栈" class="headerlink" title="Stack 栈"></a>Stack 栈</h3><p>是遵循”后进先出”(Last In First Out, LIFO)原则<br>重要线性数据结构<br>包含三个方法  </p>
+<ul>
+<li><code>public Object push(Object item)</code>:将指定对象压入栈中</li>
+<li><code>public Object pop()</code>:将栈最上面的元素从栈中取出，并返回这个对象</li>
+<li><code>public boolean empty()</code>:判断栈中没有对象元素<h3 id="队列Queue"><a href="#队列Queue" class="headerlink" title="队列Queue"></a>队列Queue</h3>队列(Queue)，也是重要的线性数据结构  </li>
+<li>队列遵循”先进先出”(First In First Out, FIFO)的原则</li>
+<li>固定在一段输入数据(称为入队)，另一端输出数据(称为出队)</li>
+</ul>
+<p>重要的实现是LinkedList类<br>||可抛出异类的|返回元素的|<br>|-|-|-|<br>|Insert(插入)|add(e)|offer(e)|<br>|Remove(移除)|remove()|poll()|<br>|Examine(检查)|element()|peek()|</p>
+<h3 id="几个早期的类或接口"><a href="#几个早期的类或接口" class="headerlink" title="几个早期的类或接口"></a>几个早期的类或接口</h3><p>Vector, 现多用ArrayList</p>
+<ul>
+<li>相当于动态数组(比JDK1.0中的ArrayList好)，elementAt</li>
+</ul>
+<p>Stack，现多用LinkedList</p>
+<ul>
+<li>Stack是Vector的子类，push，pop，peek</li>
+</ul>
+<p>Hashtable，现多用HashMap</p>
+<ul>
+<li>Hashtable实现Map接口，参见Properties类</li>
+</ul>
+<p>Enumeration，现多用Iterator</p>
+<ul>
+<li>Enumeration用另一种方式实现Iterator的功能</li>
+<li>如Vector可以得到枚举器</li>
+<li>Enumeration<E> e = v.elements();</li>
+<li>while(e.hasMoreElements()) doSomething(e.nextElement())</li>
+</ul>
+<hr>
+<h2 id="Set集"><a href="#Set集" class="headerlink" title="Set集"></a>Set集</h2><p>Set集</p>
+<ul>
+<li>两个重要的实现HashSet及TreeSet</li>
+<li>其中TreeSet的底层是用TreeMap来实现的</li>
+</ul>
+<p>Set中对象不重复，即：</p>
+<ul>
+<li>hashCode()不等</li>
+<li>如果hashCode()相等，再看equals或==是否为false</li>
+</ul>
+<p>Hashtable的实现：<br>String对象的哈希码根据以下公式计算：<br><code>s[0]*31^(n-1)+s[1]*31^(n-2)+...+s[n-1]</code><br>使用int算法，这里s[i]是字符串的第i个字符，n是字符串的长度，^表示求幂。(空字符串的哈希值为0)<br>一般在覆盖时，要同时覆盖hashCode、equals方法</p>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>Map是键-值对的集合</p>
+<ul>
+<li>其中可以取到entrySet()、keySet()、values()</li>
+<li>Map.Entry是一个嵌套接口</li>
+</ul>
+<p>Map类的重要实现<br>HashMap类<br>TreeMap类：用红黑树的算法<br>Map层次结构(简化)<br>!()[03.png]</p>
+<hr>
+<h2 id="排序和查找"><a href="#排序和查找" class="headerlink" title="排序和查找"></a>排序和查找</h2><p>自编程序排序与查找：如冒泡排序、选择排序、快速排序等。<br>系统已有的排序与查找：如Arrays类及Collections类。  </p>
+<h3 id="Arrays类"><a href="#Arrays类" class="headerlink" title="Arrays类"></a>Arrays类</h3><p>Arrays类是用于对数组进行排序和搜索的类：</p>
+<ul>
+<li>Arrays.asList(10, 7, 6, 5, 9)方法可以直接得到一个List对象</li>
+</ul>
+<p>Arrays类提供了sort()和binarySearch()<br>执行binarySearch()之前应调用sort():</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(List list)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(List list, Comparator c)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(List list, Object key)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(List list, Object key, Comparator C)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>关于比较：</p>
+<ul>
+<li>要么对象是java.lang.Comparable</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> compare <span class="title">To</span><span class="params">(Object obj)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.price - ((Book)obj).price;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>要么提供一个java.lang.Comparator</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(T o1, T o2)</span></span>;</span><br><span class="line"><span class="comment">//这些方法的含义要与equals不冲突</span></span><br></pre></td></tr></table></figure>
+<h3 id="Collections类"><a href="#Collections类" class="headerlink" title="Collections类"></a>Collections类</h3><p>此类完全由在collection上进行操作静态方法组成<br>如sort, binarySearch, reverse等<br>更一般地，使用Lambda表达式  </p>
+<hr>
+<h2 id="常用算法"><a href="#常用算法" class="headerlink" title="常用算法"></a>常用算法</h2><p>常用的几种算法，属于”通用算法”，遍试、迭代、递归和回溯。  </p>
+<h3 id="遍试"><a href="#遍试" class="headerlink" title="遍试"></a>遍试</h3><p>遍试(穷举，exhaust algorithm)<br>在有限的范围内，可以对所有的值都进行试验和判断，从而找到满足条件的值<br>遍试算法基本模式：<code>for( ; ; ){ if(); }</code></p>
+<h3 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h3><p>迭代(iterative)<br>是多次利用同一公式进行计算，每次将计算的结果再代入公式进行计算，从而逐步逼近精确解<br>迭代的基本模式：<code>while(){ x = f(x); }</code></p>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>递归(recursive)就是一个过程调用过程本身<br>再递归调用中，一个过程执行的某一步要用到它的上一步(或上几步)的结果<br>递归算法基本模式：<code>f(n){ f(n-1); }</code></p>
+<h3 id="回溯"><a href="#回溯" class="headerlink" title="回溯"></a>回溯</h3><p>回溯(back-track)<br>回溯法也叫试探回溯法：</p>
+<ul>
+<li>先选择某一可能的线索进行试探，每一步试探都有多种方式，将每一方式都一一试探，如果不符合条件就返回纠正，反复进行这种试探再返回纠正，直到得出全部符合条件的答案或是问题无解为止。</li>
+</ul>
+<p>回溯法的基本模式：<code>x++; if(...) x--;</code></p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2020/04/08/Js%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/3rd-%E6%95%B0%E7%BB%84/" style="float: left;">
+        ← 3rd.数组
+    </a>
+    
+    
+    <a class="pull-right" href="/2020/03/21/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/17th-%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+        17th.多线程 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Fenix-Cui. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" target="_blank" rel="noopener" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/Fenix-Cui/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

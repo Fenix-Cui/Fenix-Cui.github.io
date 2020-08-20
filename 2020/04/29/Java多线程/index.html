@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>Java多线程 | Fenix&#39;s Blog</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Fenix's Blog">
+    <meta name="author" content="Fenix-Cui">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Fenix&#39;s Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">Fenix-Cui</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">Fenix</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/JavaScript学习笔记/" class="animsition-link">JavaScript学习笔记<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Java笔记/Java多线程笔记/" class="animsition-link">Java多线程笔记<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java学习笔记/" class="animsition-link">Java学习笔记<small>(17)</small></a></li>
+				    
+				    <li><a href="/categories/Java总结笔记/" class="animsition-link">Java总结笔记<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Java笔记/" class="animsition-link">Java笔记<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="https://www.baidu.com/" target="_blank" rel="noopener" class="animsition-link">Baidu</a></li>
+                    
+                    <li><a href="https://www.google.com/" target="_blank" rel="noopener" class="animsition-link">Google</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Fenix's Blog</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/Fenix-Cui/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2020-04-29T07:55:32.000Z" itemprop="datePublished">
+          2020-04-29
+      </time>
+    
+    
+    | 
+    <a href='/tags/多线程/'>多线程</a>,
+    
+    <a href='/tags/Java笔记/'>Java笔记</a>
+    
+    
+</span>
+                <h1>Java多线程</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="Thread"><a href="#Thread" class="headerlink" title="Thread"></a>Thread</h2><p>自定义线程类继承Thread类</p>
+<p>重写run()方法，编写线程执行体</p>
+<p>创建线程对象，调用start()方法启动线程</p>
+<p>继承Thread类：</p>
+<ul>
+<li>子类继承Thread类具备多线程能力</li>
+<li>启动线程：子类对象.start()</li>
+<li>不建议使用：避免OOP单继承局限性</li>
+</ul>
+<p>实现Runnable接口：</p>
+<ul>
+<li>实现接口Runnable具有多线程能力</li>
+<li>启动线程：传入目标对象+Thread对象.start()</li>
+<li>推荐使用：避免单继承局限性，灵活方便，方便同一个对象被多个线程使用</li>
+</ul>
+<hr>
+<h2 id="实现多线程方法"><a href="#实现多线程方法" class="headerlink" title="实现多线程方法"></a>实现多线程方法</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><h4 id="实现Callable接口"><a href="#实现Callable接口" class="headerlink" title="实现Callable接口"></a>实现Callable接口</h4><ol>
+<li>实现Callable接口，需要返回值类型</li>
+<li>重写call方法，需要抛出异常</li>
+<li>创建目标对象</li>
+<li>创建执行服务：ExecutorService ser = Executors.newFixedThreadPool(1);</li>
+<li>提交执行：Future<Boolean> result1 = ser.submit(t1);</li>
+<li>获取结果：boolean r1 = result1.get()</li>
+<li>关闭服务：ser.shutdownNow();</li>
+</ol>
+<p>callable的好处：</p>
+<ol>
+<li>可以定义返回值</li>
+<li>可以抛出异常</li>
+</ol>
+<hr>
+<h2 id="静态代理模式总结"><a href="#静态代理模式总结" class="headerlink" title="静态代理模式总结"></a>静态代理模式总结</h2><p>真实对象(目标对象)和代理对象都要实现同一个接口</p>
+<p>代理对象要代理真实角色</p>
+<p>好处：</p>
+<p>代理对象可以做很多真实对象做不了的事情</p>
+<p>真实对象专注做自己的事情</p>
+<p><a href="https://www.bilibili.com/video/BV1V4411p7EF?p=9" target="_blank" rel="noopener">静态代理模式@秦疆</a></p>
+<hr>
+<h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><p><font color=red>Java8 函数式接口就是一个有且只有一个(除和Object中方法有相同签名的外)抽象方法</font> <a href="https://blog.csdn.net/qq_27610859/article/details/88861988" target="_blank" rel="noopener">From:MrWu_72</a></p>
+<p>内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">函数式接口(Functional Interface)就是一个有且仅有一个抽象方法，但是可以有多个非抽象方法的接口。</span><br><span class="line">函数式接口可以被隐式转换为 lambda 表达式。</span><br><span class="line">在java8源码中：Comparator接口有两个抽象方法，一个是compare，另一个是equals方法；这与函数式接口定义有冲突，因为在调用用lambda表达式调用Comparator接口中都是实现了compare方法，并没有实现equals，而equals是Object中的方法，所用的类都继承Object类，所以equals继承了Object中是实现，所以函数式接口(Functional Interface)就是一个有且仅有一个(除和Object中方法有相同签名的外)抽象方法，但是可以有多个非抽象方法的接口。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//↓会报错，因为toString()是Object中的方法</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyInterface</span> </span>&#123;</span><br><span class="line"><span class="function">String <span class="title">toString</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//↓不会报错，因为定义了一个myMethod抽象方法</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MyInterface</span> </span>&#123;</span><br><span class="line"><span class="function">String <span class="title">toString</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function">String <span class="title">myMethod</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为什么要使用lambda表达式：</p>
+<ul>
+<li>避免匿名内部类定义过多</li>
+<li>可以使代码看起来很简洁</li>
+<li>去掉一堆没有意义的代码，只留下核心的逻辑</li>
+</ul>
+<p>(params) -&gt; expression [表达式]</p>
+<p>(params) -&gt; statement [语句]</p>
+<p>(params) -&gt; { statements }</p>
+<p>理解Functional Interface(函数式接口)时学习java8 lambda表达式的关键所在。</p>
+<p>函数式接口的定义：</p>
+<p>任何接口，如果只包含唯一一个抽象方法，那么它就是一个函数式接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对于函数式接口，我们可以通过lambda表达式来创建该接口的对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.fenix.lambda;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestLambda2</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ILove love = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1. lambda表示简化</span></span><br><span class="line">        love = (<span class="keyword">int</span> a)-&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">"I love you--&gt;"</span>+a);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//简化1. 参数类型(多个参数也可以去掉，但是要都去掉,不同参数类型也可以)</span></span><br><span class="line">        love = (a)-&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">"I love you--&gt;"</span>+a);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//简化2. 简化括号(多个参数不能简化括号)</span></span><br><span class="line">        love = a-&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">"I love you--&gt;"</span>+a);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//简化3. 去掉花括号(前提是代码只有一行)(不建议)</span></span><br><span class="line">        love = a-&gt; System.out.println(<span class="string">"I love you--&gt;"</span>+a);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//总结：</span></span><br><span class="line">            <span class="comment">//lambda表达式只能有一行代码的情况虾才能简化成为一行</span></span><br><span class="line">            <span class="comment">//如果有多行，那么就用代码块包裹，不能去掉花括号</span></span><br><span class="line">            <span class="comment">//前提是函数式接口</span></span><br><span class="line">            <span class="comment">//多个参数也可以去掉参数类型，要去掉就都去掉，但是必须加括号</span></span><br><span class="line"></span><br><span class="line">        love.love(<span class="number">521</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">ILove</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">love</span><span class="params">(<span class="keyword">int</span> a)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h2><p><img src="D:%5CFenix%5Cblog%5Csource%5C_posts%5CJava%E5%A4%9A%E7%BA%BF%E7%A8%8B%5C%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%811.png" alt="image-20200503165833728"></p>
+<p><img src="D:%5CFenix%5Cblog%5Csource%5C_posts%5CJava%E5%A4%9A%E7%BA%BF%E7%A8%8B%5C%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%812.png" alt="image-20200503170150741"></p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>setPriority(int newPriority)</td>
+<td>更改线程的优先级</td>
+</tr>
+<tr>
+<td>static void sleep(long millis)</td>
+<td>在指定的毫秒数内让当前正在执行的线程休眠</td>
+</tr>
+<tr>
+<td>void join()</td>
+<td>等待该线程终止</td>
+</tr>
+<tr>
+<td>static void yield()</td>
+<td>暂停当前正在执行的线程对象，并执行其他线程</td>
+</tr>
+<tr>
+<td>void interrupt()</td>
+<td>中断线程 (不建议使用)</td>
+</tr>
+<tr>
+<td>boolean isAlive()</td>
+<td>测试线程是否处于活动状态</td>
+</tr>
+</tbody></table>
+<h3 id="线程休眠-sleep"><a href="#线程休眠-sleep" class="headerlink" title="线程休眠(sleep)"></a>线程休眠(sleep)</h3><p>sleep(时间)指定当前线程阻塞的毫秒数(1000ms=1s)</p>
+<p>sleep存在异常InterruptedException</p>
+<p>sleep时间达到后线程进入就绪状态</p>
+<p>sleep可以模拟网络延时，倒计时等</p>
+<p><font color=red>每一个对象都有一个锁，sleep不会释放锁</font></p>
+<h3 id="线程礼让-yield"><a href="#线程礼让-yield" class="headerlink" title="线程礼让(yield)"></a>线程礼让(yield)</h3><p>礼让线程，让当前正在执行的线程暂停，但不阻塞</p>
+<p>讲线程从运行状态转为就绪状态</p>
+<p>让cpu重新调度，礼让不一定成功</p>
+<p>当A和B同时进入时，A礼让后，有可能重新调度之后还是A</p>
+<h3 id="线程强制执行-join"><a href="#线程强制执行-join" class="headerlink" title="线程强制执行(join)"></a>线程强制执行(join)</h3><p>Join合并线程，等待join线程执行完之后，才能执行其他线程，其他线程阻塞</p>
+<h3 id="线程状态观测-Thread-State"><a href="#线程状态观测-Thread-State" class="headerlink" title="线程状态观测(Thread.State)"></a>线程状态观测(Thread.State)</h3><p><img src="D:%5CFenix%5Cblog%5Csource%5C_posts%5CJava%E5%A4%9A%E7%BA%BF%E7%A8%8B%5C%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E8%A7%82%E6%B5%8B.png" alt="image-20200505145636924"></p>
+<p>注：线程中断或者结束，一旦进入死亡状态，就不能再次启动了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.fenix.thread.state;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestState</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(()-&gt;&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"//////"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//观察状态</span></span><br><span class="line">        Thread.State state = thread.getState();</span><br><span class="line">        System.out.println(state);<span class="comment">//New</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//观察启动后</span></span><br><span class="line">        thread.start();<span class="comment">//启动线程</span></span><br><span class="line">        state = thread.getState();</span><br><span class="line">        System.out.println(state);<span class="comment">//Run</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(state!=Thread.State.TERMINATED) &#123;<span class="comment">//只要线程不终止，就一直输出状态</span></span><br><span class="line">            Thread.sleep(<span class="number">100</span>);</span><br><span class="line">            state = thread.getState();<span class="comment">//更新线程状态</span></span><br><span class="line">            System.out.println(state);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="线程优先级-Priority"><a href="#线程优先级-Priority" class="headerlink" title="线程优先级(Priority)"></a>线程优先级(Priority)</h3><p>Java提供一个线程调度器来监控程序中启动后进入就绪状态的所有线程，线程调度器按照优先级决定应该调度哪个线程来执行</p>
+<p>线程的优先级用数字表示，范围从1~10</p>
+<ul>
+<li>Thread.MIN_PRIORITY = 1;</li>
+<li>Thread.MAX_PRIORITY = 10;</li>
+<li>Thread.NORM_PRIORITY = 5;</li>
+</ul>
+<p>使用以下方式改变或获取优先级</p>
+<ul>
+<li>getPriority().setPriority(int xxx)</li>
+</ul>
+<p>优先级的设定建议再start()调度前</p>
+<p>注：优先级低只是意味着获得调度的概率低，并不是优先级低就不会被调用了。主要看CPU的调度</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.fenix.thread.state;</span><br><span class="line"></span><br><span class="line"><span class="comment">//测试线程的 优先级</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestPriority</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//主线程默认优先级</span></span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">"--&gt;"</span>+Thread.currentThread().getPriority());</span><br><span class="line"></span><br><span class="line">        MyPriority myPriority = <span class="keyword">new</span> MyPriority();</span><br><span class="line"></span><br><span class="line">        Thread t1 = <span class="keyword">new</span> Thread(myPriority);</span><br><span class="line">        Thread t2 = <span class="keyword">new</span> Thread(myPriority);</span><br><span class="line">        Thread t3 = <span class="keyword">new</span> Thread(myPriority);</span><br><span class="line">        Thread t4 = <span class="keyword">new</span> Thread(myPriority);</span><br><span class="line">        Thread t5 = <span class="keyword">new</span> Thread(myPriority);</span><br><span class="line">        Thread t6 = <span class="keyword">new</span> Thread(myPriority);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//先设置优先级，再启动</span></span><br><span class="line">        t1.start();</span><br><span class="line"></span><br><span class="line">        t2.setPriority(<span class="number">1</span>);</span><br><span class="line">        t2.start();</span><br><span class="line"></span><br><span class="line">        t3.setPriority(<span class="number">4</span>);</span><br><span class="line">        t3.start();</span><br><span class="line"></span><br><span class="line">        t4.setPriority(Thread.MAX_PRIORITY);<span class="comment">//MAX_PRIORITY = 10</span></span><br><span class="line">        t4.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//优先级最小为1，最大为10</span></span><br><span class="line">        <span class="comment">/*t5.setPriority(-1);</span></span><br><span class="line"><span class="comment">        t5.start();</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        t6.setPriority(11);</span></span><br><span class="line"><span class="comment">        t6.start();*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyPriority</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(Thread.currentThread().getName()+<span class="string">"--&gt;"</span>+Thread.currentThread().getPriority());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="守护线程-daemon"><a href="#守护线程-daemon" class="headerlink" title="守护线程(daemon)"></a>守护线程(daemon)</h3><p>线程分为用户线程和守护线程</p>
+<p>虚拟机必须确保用户线程执行完毕</p>
+<p>虚拟机不用等待守护线程执行完毕</p>
+<p>如，后台记录操作日志，监控内存，垃圾回收等待。。。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.fenix.thread.state;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDaemon</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        God god = <span class="keyword">new</span> God();</span><br><span class="line">        You you = <span class="keyword">new</span> You();</span><br><span class="line"></span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(god);</span><br><span class="line">        thread.setDaemon(<span class="keyword">true</span>);<span class="comment">//默认是false表示是用户线程，正常的线程都是用户线程</span></span><br><span class="line"></span><br><span class="line">        thread.start();<span class="comment">//上帝守护线程启动</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">new</span> Thread(you).start();<span class="comment">//你，用户线程启动</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">God</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">            System.out.println(<span class="string">"上帝保佑着你"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">You</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">36500</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"你一生都开心的活着"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"=====Goodbye!World!====="</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a>线程同步</h2><p>多个线程操作同一个资源</p>
+<p>同一个进程的多个线程共享同一块存储空间，在带来方便的同时，也带来了访问冲突问题，为了保证数据在方法中被访问时的正确性，在访问时加入锁机制(synchronized)，当一个线程获得对象的排他锁，独占资源，其他线程必须等待，使用后释放锁即可。</p>
+<p>存在以下问题：</p>
+<ul>
+<li>一个线程持有锁会导致其他所有需要此锁的线程挂起</li>
+<li>在多线程竞争下，加锁，释放锁会导致比较多的上下文切换和调度延时，引起性能问题</li>
+<li>如果一个优先级高的线程等待一个优先级低的线程释放锁，会导致优先级倒置，引起性能问题</li>
+</ul>
+<h3 id="并发"><a href="#并发" class="headerlink" title="并发"></a>并发</h3><p>并发：同一个对象被多个线程同时操作</p>
+<h3 id="同步方法"><a href="#同步方法" class="headerlink" title="同步方法"></a>同步方法</h3><p>由于我们可以通过private关键字来保证数据随想只能被方法访问，所以我们只需要针对方法提出一套机制，这套机制就是synchronized关键字，它包括两种用法：</p>
+<p>synchronized方法和synchronized块</p>
+<p>同步方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">(<span class="keyword">int</span> args)</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>synchronized方法控制对”对象”的访问，每个对象对应一把锁，每个synchronized方法都必须获得调用该方法的对象的锁才能执行，否则线程会阻塞，方法一旦执行，就独占该锁，知道该方法返回才释放锁，后面被阻塞的线程才能获得这个锁，继续执行。</p>
+<p>缺陷：若将一个大的方法声明为synchronized将会影响效率</p>
+<h3 id="同步块"><a href="#同步块" class="headerlink" title="同步块"></a>同步块</h3><p>同步块：synchronized(Obj){}</p>
+<p>Obj称之为同步监视器</p>
+<p>Obj方法中无需指定同步监视器，因为同步方法的同步监视器就是this，就是这个对象本身，或者是class</p>
+<p>同步监视器的执行过程</p>
+<ol>
+<li>第一个线程访问，锁定同步监视器，执行其中代码</li>
+<li>第二个线程访问，发现同步监视器锁定，无法访问</li>
+<li>第一个线程访问完毕，解锁同步监视器</li>
+<li>第二个线程访问，发现同步监视器没有锁，然后锁定并访问</li>
+</ol>
+<hr>
+<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><p>多个线程各自占有一些共享资源，并且互相等待其他线程占有的资源才能运行，而导致两个或者多个线程都在等待对方释放资源，都停止执行的清醒，某一个同步块同时拥有”<font color=red>两个以上对象的锁</font>“时，就可能会发生”死锁”的问题</p>
+<h3 id="死锁的避免方法"><a href="#死锁的避免方法" class="headerlink" title="死锁的避免方法"></a>死锁的避免方法</h3><p>产生死锁的四个必要条件：</p>
+<ol>
+<li>互斥条件：一个资源每次只能被一个进程使用</li>
+<li>请求与保持条件：一个进程因请求资源而阻塞时，对已获得的资源保持不妨</li>
+<li>不剥夺条件：进程已获得的资源，在未使用完之前，不能强行剥夺</li>
+<li>循环等待条件：若干进程之间形成一种头尾相接的循环等带资源关系</li>
+</ol>
+<p>上面列出了死锁的四个必要条件，我们只要想办法批结其中国的一个或多个条件就可以避免死锁发生</p>
+<h2 id="Lock-锁"><a href="#Lock-锁" class="headerlink" title="Lock(锁)"></a>Lock(锁)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ReentrantLock lock = <span class="keyword">new</span> ReenTrantLock();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">m</span><span class="params">()</span></span>&#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="comment">//保证线程安全的代码;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">finally</span>&#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">            <span class="comment">//如果同步代码有异常，要将unlock()写入finall语句块</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="synchronized与Lock的对比"><a href="#synchronized与Lock的对比" class="headerlink" title="synchronized与Lock的对比"></a>synchronized与Lock的对比</h3><table>
+<thead>
+<tr>
+<th>Lock</th>
+<th>synchronized</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>显式锁</td>
+<td>隐式锁</td>
+</tr>
+<tr>
+<td>手动开启和关闭</td>
+<td>除了作用域自动释放</td>
+</tr>
+<tr>
+<td>只有代码块锁</td>
+<td>有代码块锁和方法锁</td>
+</tr>
+</tbody></table>
+<p>使用Lock锁，JVM调度线程花费时间少，性能好，并且有更好的扩展性，提供更多的子类</p>
+<p>优先使用顺序：</p>
+<p>Lock &gt; 同步代码块(已经进入了方法体，分配了相应资源) &gt; 同步方法(在方法体之外)</p>
+<hr>
+<h2 id="线程协作"><a href="#线程协作" class="headerlink" title="线程协作"></a>线程协作</h2><h3 id="生产者消费者模式"><a href="#生产者消费者模式" class="headerlink" title="生产者消费者模式"></a>生产者消费者模式</h3><p>Producer(生产者) —–&gt; 数据缓存区 —–&gt; Consumer(消费者)</p>
+<p>分析：这是一个线程同步问题，生产者和消费者共享同一个资源，并且生产者和消费者之间相互依赖，互为条件。</p>
+<p>对于生产者：没有产品前，通知消费者等待；生产产品后，通知消费者消费。</p>
+<p>对于消费者：消费后，通知生产者已经结束消费，需要生产新的产品以供消费</p>
+<p>在生产者消费者问题中，仅有synchronized是不够的</p>
+<p>synchronized可阻止并发更新同一个共享资源，实现同步</p>
+<p>synchronized不能用来实现不同线程之间的消息传递(通信)</p>
+<p>Java中提供了几个方法来解决线程之间的通信问题</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>wait()</td>
+<td>表示线程一直等待，直到其他线程通知，与sleep不同，会释放锁</td>
+</tr>
+<tr>
+<td>wait(long timeout)</td>
+<td>指定等待的毫秒数</td>
+</tr>
+<tr>
+<td>notify()</td>
+<td>唤醒一个处于等待状态的线程</td>
+</tr>
+<tr>
+<td>notifyAll()</td>
+<td>唤醒同一个对象上所有调用wait()方法的线程，优先级别高的线程优先调度</td>
+</tr>
+</tbody></table>
+<p>注：均是Object类的方法，都只能在同步方法或者同步代码块中使用，否则会抛出异常IllegalMonitorStateException(开头是大写I(i)，第二第三是两个小写l(L))</p>
+<p>解决方式1：</p>
+<p>并发协作模型：”生产者/消费者模式”—&gt;管程法</p>
+<p>生产者：负责生产数据的模块(可能是方法，对象，线程，进程)</p>
+<p>消费者：负责处理数据模块(可能是方法，对象，线程，进程)</p>
+<p>缓冲区：消费者不能直接使用生产者的数据，他们之间有个”缓冲区”</p>
+<p>生产者将生产好的数据放入缓冲区，消费者从缓冲区拿出数据</p>
+<p>解决方式2：</p>
+<p>并发协作模型：”生产者/消费者模式”—&gt;信号灯法</p>
+<hr>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>背景：经常创建和销毁、使用量特别大的资源，比如并发情况下的线程，对性能影响很大</p>
+<p>思路：提前创建好多个线程，放入线程池中，使用时直接获取，使用完放回池中，使用时直接获取，使用完放回池中。可以避免频繁创建销毁、实现重复利用。类似生活中的公共交通工具。</p>
+<p>好处：</p>
+<ul>
+<li>提高响应速度(减少了创建新线程的时间)</li>
+<li>降低资源消耗(重复利用线程池中线程，不需要每次都创建)</li>
+<li>便于线程管理(…)<ul>
+<li>corePoolSize：核心池的大小</li>
+<li>maximumPoolSize：最大线程数</li>
+<li>keepAliveTime：线程没有任务时最多保持多长时间后会终止</li>
+</ul>
+</li>
+</ul>
+<h3 id="使用线程池"><a href="#使用线程池" class="headerlink" title="使用线程池"></a>使用线程池</h3><p>JDK 5.0起提供了线程池相关API：ExecutorService和Executors</p>
+<p>ExecutorService：真正的线程池接口。常见子类ThreadPoolExecutor</p>
+<ul>
+<li>void execute(Runnable command)：执行任务/命令，没有返回值，一般用来执行Runnable</li>
+<li><T>Future<T>submit(Callable<T>task)：执行任务，有返回值，一般又来执行Callable</li>
+<li>void shutdown()：关闭线程池</li>
+</ul>
+<p>Executors：工具类、线程池的工厂类，用于创建并返回不同类型的线程池</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2020/05/28/JVM/" style="float: left;">
+        ← JVM
+    </a>
+    
+    
+    <a class="pull-right" href="/2020/04/28/GUI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/GUI%E7%BC%96%E7%A8%8B%E7%AC%94%E8%AE%B0/">
+        GUI编程笔记 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Fenix-Cui. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" target="_blank" rel="noopener" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/Fenix-Cui/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

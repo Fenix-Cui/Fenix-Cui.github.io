@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>LeetCode/20-有效的括号/20 | Fenix&#39;s Blog</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Fenix's Blog">
+    <meta name="author" content="Fenix-Cui">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Fenix&#39;s Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">Fenix-Cui</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">Fenix</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/JavaScript学习笔记/" class="animsition-link">JavaScript学习笔记<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Java笔记/Java多线程笔记/" class="animsition-link">Java多线程笔记<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java学习笔记/" class="animsition-link">Java学习笔记<small>(17)</small></a></li>
+				    
+				    <li><a href="/categories/Java总结笔记/" class="animsition-link">Java总结笔记<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Java笔记/" class="animsition-link">Java笔记<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="https://www.baidu.com/" target="_blank" rel="noopener" class="animsition-link">Baidu</a></li>
+                    
+                    <li><a href="https://www.google.com/" target="_blank" rel="noopener" class="animsition-link">Google</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Fenix's Blog</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/Fenix-Cui/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2020-08-14T09:38:51.282Z" itemprop="datePublished">
+          2020-08-14
+      </time>
+    
+</span>
+                <h1>LeetCode/20-有效的括号/20</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="20-有效的括号"><a href="#20-有效的括号" class="headerlink" title="20. 有效的括号"></a>20. 有效的括号</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<ol>
+<li>左括号必须用相同类型的右括号闭合。</li>
+<li>左括号必须以正确的顺序闭合。</li>
+</ol>
+<p>注意空字符串可被认为是有效字符串。</p>
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;()&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;()[]&#123;&#125;&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<p>示例 3:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;(]&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+
+<p>示例 4:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;([)]&quot;</span><br><span class="line">输出: false</span><br></pre></td></tr></table></figure>
+
+<p>示例 5:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;&#123;[]&#125;&quot;</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.length();</span><br><span class="line">        <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Map&lt;Character, Character&gt; pairs = <span class="keyword">new</span> HashMap&lt;Character, Character&gt;() &#123;&#123;</span><br><span class="line">            put(<span class="string">')'</span>, <span class="string">'('</span>);</span><br><span class="line">            put(<span class="string">']'</span>, <span class="string">'['</span>);</span><br><span class="line">            put(<span class="string">'&#125;'</span>, <span class="string">'&#123;'</span>);</span><br><span class="line">        &#125;&#125;;</span><br><span class="line">        Deque&lt;Character&gt; stack = <span class="keyword">new</span> LinkedList&lt;Character&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> ch = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (pairs.containsKey(ch)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (stack.isEmpty() || stack.peek() != pairs.get(ch)) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                stack.pop();</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                stack.push(ch);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> stack.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Helloworld h = <span class="keyword">new</span> helloworld();</span><br><span class="line"><span class="comment">//Helloworld 表示一个类或者接口</span></span><br><span class="line"><span class="comment">//h表示Helloworld 的一个实例</span></span><br><span class="line"><span class="comment">//new helloworld();表示接口的实现或者类的实例化，表示在内存中创建了一个实例。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="deque函数-双端队列"><a href="#deque函数-双端队列" class="headerlink" title="deque函数(双端队列)"></a>deque函数(双端队列)</h3><p>deque容器为一个给定类型的元素进行线性处理，像向量一样，它能够快速地随机访问任一个元素，并且能够高效地插入和删除容器的尾部元素。但它又与vector不同，deque支持高效插入和删除容器的头部元素，因此也叫做双端队列</p>
+<p>使用方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">1</span>)    构造函数</span><br><span class="line">deque():创建一个空deque</span><br><span class="line">deque(<span class="keyword">int</span> nSize):创建一个deque,元素个数为nSize</span><br><span class="line">deque(<span class="keyword">int</span> nSize,<span class="keyword">const</span> T&amp; t):创建一个deque,元素个数为nSize,且值均为t</span><br><span class="line">deque(<span class="keyword">const</span> deque &amp;):复制构造函数</span><br><span class="line">(<span class="number">2</span>)    增加函数</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_front</span><span class="params">(<span class="keyword">const</span> T&amp; x)</span>:双端队列头部增加一个元素X</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_back</span><span class="params">(<span class="keyword">const</span> T&amp; x)</span>:双端队列尾部增加一个元素x</span></span><br><span class="line"><span class="function">iterator <span class="title">insert</span><span class="params">(iterator it,<span class="keyword">const</span> T&amp; x)</span>:双端队列中某一元素前增加一个元素x</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(iterator it,<span class="keyword">int</span> n,<span class="keyword">const</span> T&amp; x)</span>:双端队列中某一元素前增加n个相同的元素x</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(iterator it,const_iterator first,const_iteratorlast)</span>:双端队列中某一元素前插入另一个相同类型向量的[forst,last)间的数据</span></span><br><span class="line"><span class="function"><span class="params">(<span class="number">3</span>)</span>    删除函数</span></span><br><span class="line"><span class="function">Iterator <span class="title">erase</span><span class="params">(iterator it)</span>:删除双端队列中的某一个元素</span></span><br><span class="line"><span class="function">Iterator <span class="title">erase</span><span class="params">(iterator first,iterator last)</span>:删除双端队列中[first,last）中的元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop_front</span><span class="params">()</span>:删除双端队列中最前一个元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop_back</span><span class="params">()</span>:删除双端队列中最后一个元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span>:清空双端队列中最后一个元素</span></span><br><span class="line"><span class="function"><span class="params">(<span class="number">4</span>)</span>    遍历函数</span></span><br><span class="line"><span class="function">reference <span class="title">at</span><span class="params">(<span class="keyword">int</span> pos)</span>:返回pos位置元素的引用</span></span><br><span class="line"><span class="function">reference <span class="title">front</span><span class="params">()</span>:返回首元素的引用</span></span><br><span class="line"><span class="function">reference <span class="title">back</span><span class="params">()</span>:返回尾元素的引用</span></span><br><span class="line"><span class="function">iterator <span class="title">begin</span><span class="params">()</span>:返回向量头指针，指向第一个元素</span></span><br><span class="line"><span class="function">iterator <span class="title">end</span><span class="params">()</span>:返回指向向量中最后一个元素下一个元素的指针（不包含在向量中）</span></span><br><span class="line"><span class="function">reverse_iterator <span class="title">rbegin</span><span class="params">()</span>:反向迭代器，指向最后一个元素</span></span><br><span class="line"><span class="function">reverse_iterator <span class="title">rend</span><span class="params">()</span>:反向迭代器，指向第一个元素的前一个元素</span></span><br><span class="line"><span class="function"><span class="params">(<span class="number">5</span>)</span>    判断函数</span></span><br><span class="line"><span class="function">bool <span class="title">empty</span><span class="params">()</span> <span class="keyword">const</span>:向量是否为空，若<span class="keyword">true</span>,则向量中无元素</span></span><br><span class="line"><span class="function"><span class="params">(<span class="number">6</span>)</span>    大小函数</span></span><br><span class="line"><span class="function">Int <span class="title">size</span><span class="params">()</span> <span class="keyword">const</span>:返回向量中元素的个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">max_size</span><span class="params">()</span> <span class="keyword">const</span>:返回最大可允许的双端对了元素数量值</span></span><br><span class="line"><span class="function"><span class="params">(<span class="number">7</span>)</span>    其他函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(deque&amp;)</span>:交换两个同类型向量的数据</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">assign</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">const</span> T&amp; x)</span>:向量中第n个元素的值设置为x</span></span><br></pre></td></tr></table></figure>
+
+<p>charAt()方法：</p>
+<p><img src="D:%5CFenix%5Cblog%5Csource_posts%5CLeetCode%5C20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7%5C20%5CcharAt()%E6%96%B9%E6%B3%95.png" alt="charAt()方法"></p>
+<p>pop()方法：</p>
+<p><img src="D:%5CFenix%5Cblog%5Csource_posts%5CLeetCode%5C20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7%5C20%5Cpop.png" alt="pop"></p>
+<p>push()方法：</p>
+<p><img src="D:%5CFenix%5Cblog%5Csource_posts%5CLeetCode%5C20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7%5C20%5Cpush().png" alt="push()"></p>
+<p>容器：</p>
+<p><img src="D:%5CFenix%5Cblog%5Csource_posts%5CLeetCode%5C20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7%5C20%5C%E5%AE%B9%E5%99%A8.png" alt="容器"></p>
+<h3 id="LinkedList-双向列表"><a href="#LinkedList-双向列表" class="headerlink" title="LinkedList(双向列表)"></a>LinkedList(双向列表)</h3><p>LinkedList类是双向列表,列表中的每个节点都包含了对前一个和后一个元素的引用.<br>LinkedList的构造函数如下</p>
+<ol>
+<li>public LinkedList():  ——生成空的链表</li>
+<li>public LinkedList(Collection col):  复制构造函数</li>
+</ol>
+<h3 id="containsKey-Object-key"><a href="#containsKey-Object-key" class="headerlink" title="containsKey(Object key)"></a>containsKey(Object key)</h3><p><img src="D:%5CFenix%5Cblog%5Csource_posts%5CLeetCode%5C20-%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7%5C20%5CcontainsKey.png" alt="image-20200814184455941"></p>
+<h3 id="peek-方法"><a href="#peek-方法" class="headerlink" title="peek()方法"></a>peek()方法</h3><p>java里Stack的peek方法是返回栈顶的元素但不移除它。</p>
+<p>但Stack的pop方法是会移除的。</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2020/08/20/test/" style="float: left;">
+        ← test
+    </a>
+    
+    
+    <a class="pull-right" href="/2020/08/10/Mybatis/">
+        Mybatis →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Fenix-Cui. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" target="_blank" rel="noopener" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/Fenix-Cui/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>

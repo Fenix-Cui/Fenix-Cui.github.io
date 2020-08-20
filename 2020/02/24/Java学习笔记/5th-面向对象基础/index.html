@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>5th.面向对象基础 | Fenix&#39;s Blog</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Fenix's Blog">
+    <meta name="author" content="Fenix-Cui">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Fenix&#39;s Blog" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            <li>
+                <a class="sb-toggle-submenu">Works<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                        <li><a href="/" target="_BLANK" class="animsition-link">Fenix-Cui</a></li>
+                    
+                        <li><a href="/atom.xml" target="_BLANK" class="animsition-link">Fenix</a></li>
+                    
+                </ul>
+            </li>
+            
+            
+        	<li>
+        		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
+            	<ul class="sb-submenu">
+				  	
+				    <li><a href="/categories/JavaScript学习笔记/" class="animsition-link">JavaScript学习笔记<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Java笔记/Java多线程笔记/" class="animsition-link">Java多线程笔记<small>(1)</small></a></li>
+				    
+				    <li><a href="/categories/Java学习笔记/" class="animsition-link">Java学习笔记<small>(17)</small></a></li>
+				    
+				    <li><a href="/categories/Java总结笔记/" class="animsition-link">Java总结笔记<small>(2)</small></a></li>
+				    
+				    <li><a href="/categories/Java笔记/" class="animsition-link">Java笔记<small>(1)</small></a></li>
+				    
+				</ul>
+        	</li>
+			
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a href="https://www.baidu.com/" target="_blank" rel="noopener" class="animsition-link">Baidu</a></li>
+                    
+                    <li><a href="https://www.google.com/" target="_blank" rel="noopener" class="animsition-link">Google</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Fenix's Blog</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/Fenix-Cui/" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a></li>
+                            
+                            
+                            <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a></li>
+                            
+                            
+                            <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a></li>
+                            
+                            
+                            <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a></li>
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2020-02-24T08:22:39.000Z" itemprop="datePublished">
+          2020-02-24
+      </time>
+    
+</span>
+                <h1>5th.面向对象基础</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h2 id="字段和方法"><a href="#字段和方法" class="headerlink" title="字段和方法"></a>字段和方法</h2><p>字段（field）是类的属性，是用变量来表示的<br>字段又称为域、域变量、属性、成员变量等<br>方法（method）是类的功能和操作，是用函数来表示的<br>构造方法（constructor）是一种特殊的方法<br>用来初始化（new）该类的一个新的对象<br>构造方法和类名同名，而且不写返回数据类型<br>一般情况下，类都有一个至多个构造方法<br>如果没有定义任何构造方法，系统会自动产生一个构造方法，称为默认构造方法（default construtor）<br>默认构造方法不带参数，并且方法体为空  </p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>继承（inheritance）是面向对象的程序设计中最为重要的特征之一<br>子类（subclass），父类或超类（superclass）<br><code>父类包括所有直接或间接被继承的类</code><br>Java支持单继承：一个类只能有一个直接父类<br>子类继承父类的状态和行为<br><code>可以修改父类的状态或重载父类的行为</code><br><code>可以添加新的状态和行为</code><br>好处：</p>
+<ul>
+<li>可以提高程序的抽象程度</li>
+<li>实现代码重用，提高开发效率和可维护性</li>
+</ul>
+<p>Java中的继承是通过<code>extends</code>关键字来实现的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果没有extends，默认为java.lang.Object的子类，所有的类直接或间接地继承java.lang.Object<br>继承关系在UML图中，是用一个箭头来表示子类与父类的关系的，相当于is a<br><img src="01.png" alt="类Student从类Person继承"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    String school;</span><br><span class="line">    <span class="keyword">int</span> score;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">isGood</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> score&gt;<span class="number">80</span>;&#125;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="字段"><a href="#字段" class="headerlink" title="字段"></a>字段</h2><p>字段的继承：</p>
+<ul>
+<li>子类可以继承父类的所有字段</li>
+<li>Student自动具有Person的属性(name, age)</li>
+</ul>
+<p>字段的隐藏：</p>
+<ul>
+<li>子类重新定义一个与从父类那里继承来的域变量完全相同的变量，称为域的隐藏。域的隐藏在实际编程中用的少</li>
+</ul>
+<p>字段的添加：</p>
+<ul>
+<li>在定义子类时， 加上新的域变量，就可以使子类比父类多一些属性。如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    String school;</span><br><span class="line">    <span class="keyword">int</span> score;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2>方法的继承：</li>
+<li>父类的非私有方法也可以被子类自动继承。方法的覆盖(Override)(修改)</li>
+<li>子类也可以重新定义与父类同名的方法，实现对父类方法的覆盖(Override)<br>方法的添加：</li>
+<li>子类可以新家一些方法，以针对子类实现相应的功能。<br>如在类Student中加入一个方法，对分数进行判断：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> is <span class="title">GoodStudent</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> score &gt;= <span class="number">90</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2>方法重载（overloading）：多个方法有相同的名字，编译时能识别出来<br>这些方法的签名（signature）不同，或者是参数个数不同，或者是参数类型不同<br>通过方法重载可以实现多态（polymorphism）<br>一个类中可以有几个同名的方法，这称为方法的重载(Overload)。同时还可以重载父类的同名方法。与方法覆盖不同的使，重载不要求参数类型列表相同。重载的方法实际是新加的方法。<br>如，在类Student中，重载一个名为sayHello的方法：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sayHello</span><span class="params">(Student another)</span></span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Hi!"</span>);</span><br><span class="line">    <span class="keyword">if</span>(school.equals(another.school))&#123;</span><br><span class="line">        System.out.println(<span class="string">"Shoolmates"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Override"><a href="#Override" class="headerlink" title="@Override"></a>@Override</h2><code>@Override //JDK1.5以后可以用这个注记来表示(不用也是可以的)</code><br>通过方法的覆盖，能够修改对象的同名方法的具体实现方法  <h2 id="this"><a href="#this" class="headerlink" title="this"></a>this</h2>在方法及构造方法中，使用this来访问字段及方法<br>使用this解决局部变量与域同名的问题<br>使用this还可以解决局部变量（方法中的变量）或参数变量与域变量同名的问题  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Person(<span class="keyword">int</span> age, String name)&#123;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+这里，this.age表示域变量，而age表示的是参数变量  <h2 id="super的使用"><a href="#super的使用" class="headerlink" title="super的使用"></a>super的使用</h2>使用super访问父类的域和方法<br>注：正是由于继承，使用this可以访问父类的域和方法。但有事为了明确地知名父类的域和方法，就要用关键字super。<br>例如：父类Student有一个域age，在子类Student中用<code>age, this.age, super.age</code>来访问age是完全一样的：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">testThisSuper</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    a = age;</span><br><span class="line">    a = <span class="keyword">this</span>.age;</span><br><span class="line">    a = <span class="keyword">super</span>.age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+当然，使用super不能访问子类中添加的域和方法。<br>有时需要使用super以区别同名的域与方法：</li>
+<li>使用super可以访问被子类所隐藏了的同名变量</li>
+<li>又如，当覆盖父类的同名方法的同时，又要调用父类的方法，就必须使用super。如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.sayHello();</span><br><span class="line">    System.out.println(<span class="string">"My school is "</span> + school);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+在覆盖父类的方法的同时，又利用已定义好的父类的方法<br>使用父类构造方法：构造方法是不能继承的<br>比如，父类Person有一个构造方法Person(string, int)，不能说子类Student也自动有一个构造方法Student(String, int)。<br>但是，子类在构造方法中，可以用super来调用父类的构造方法。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Student(String name, <span class="keyword">int</span> age, String school)&#123;</span><br><span class="line">    <span class="keyword">super</span>(name, age);</span><br><span class="line">    <span class="keyword">this</span>.school = school;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+使用的时候，<code>super()必须放在第一句</code>  <h3 id="父类对象与子类对象的转换"><a href="#父类对象与子类对象的转换" class="headerlink" title="父类对象与子类对象的转换"></a>父类对象与子类对象的转换</h3>类似于基本数据类型数据之间的强制类型转换，存在继承关系的父类对象和子类对象之间也可以在一定条件下相互转换。  </li>
+<li>子类对象可以被是非其父类的一个对象</li>
+<li>父类对象不能被当作其某一个子类的对象</li>
+<li>如果一个方法的形式参数定义的是父类对象，那么调用这个方法的时候，可以使用子类对象作为实际参数。</li>
+<li>如果父类对象引用指向的实际是一个子类对象，那么这个父类对象引用可以用强制类型转换(casting)成子类对象的引用</li>
+</ul>
+<hr>
+<h2 id="包-package"><a href="#包-package" class="headerlink" title="包(package)"></a>包(package)</h2><p>包及子包的定义，实际上是为了解决名字空间、名字冲突</p>
+<ul>
+<li>它与类的继承没有关系。事实上，一个子类与其父类可以位于不同的包中。</li>
+</ul>
+<p>包有两方面的含义</p>
+<ul>
+<li>名字空间、存储路径(文件夹)</li>
+<li>可访问性(同一包中的各个类，默认情况下可互相访问)</li>
+</ul>
+<h2 id="import语句"><a href="#import语句" class="headerlink" title="import语句"></a>import语句</h2><p>为了能使用Java中已提供的类，需要用import语句来导入所需要的类。<br>import语句的格式为：</p>
+<ul>
+<li>import package1[.package2…].(classname |*);</li>
+</ul>
+<p>例如：</p>
+<ul>
+<li><code>import java.util.Date;</code><ul>
+<li>这样，程序中<code>java.util.Date可以简写为Date</code></li>
+</ul>
+</li>
+<li><code>import java.awt.*;</code></li>
+<li><code>import java.awt.event.*;</code></li>
+<li>注：使用 <code>*</code> 只能表示本层次的所有类，不包括子层次下的类。</li>
+</ul>
+<p>Java编译器自动导入包java.lang.*</p>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><p>修饰符(modifiers)分为两类</p>
+<ul>
+<li>访问修饰符(access modifiers)<br>如public/private等</li>
+<li>其他修饰符<br>如abstract等</li>
+</ul>
+<p>可以修饰类、也可以修饰类的成员(字段、方法)<br>成员的控制访问符(权限修饰符)<br><img src="02.png" alt="成员的访问修饰符(权限修饰符)"></p>
+<h2 id="setter与getter"><a href="#setter与getter" class="headerlink" title="setter与getter"></a>setter与getter</h2><ul>
+<li>将字段用private修饰，从而更好的将信息进行封装和隐藏</li>
+<li>用setXXXX和getXXX方法对类的属性进行存取，分别称为setter与getter</li>
+<li>这种方法有以下有点<ul>
+<li><ol>
+<li>属性用private更好地封装和隐藏，外部类不能随意存取和修改</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>提供方法来存取对象的属性，在方法中可以对给定的参数的合法性进行检验</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>方法可以用来给出计算后的值</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>方法可以完成其他必要的工作(如清理资源、设定状态，等等)</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>值提供getXXX方法，而不提供setXXXX方法，可以保证属性是只读的</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="static字段"><a href="#static字段" class="headerlink" title="static字段"></a>static字段</h2><p>静态字段最本质的特点是：它们是类的字段，<code>不属于任何一个对象实例</code>。<br>它不保存在某个对象实例的内存区间中，而是保存在类的内存区域的公共存储单元。<br>类变量可以通过类名直接访问，也可以通过实例对象来访问，两种方法的结果是相同的。<br>如System类和in和out对象，就是属于类的域，直接用类名来访问，既System.in和System.out。<br>用static修饰符修饰的方法仅属于类的静态方法，又称为类方法。<br>与此相对，不用static修饰的方法，则为实例方法。<br>类方法的本质是该方法是属于整个类的，不是属于某个实例的。<br>生命一个方法为static有以下几重含义。</p>
+<ol>
+<li>非static的方法是属于某个对象的方法，在这个对象创建时，对象的方法在内存中拥有自己专用的代码段。而static的方法是属于整个类的，它在内存中的代码段将随着类的定义而进行分配和装在，不被任何一个对象专有。  </li>
+<li>由于static是方法是属于整个类的，所以它不能操偶那个和处理属于某个对象的成员变量，而只能处理属于整个类的成员变量，即static方法只能处理本类中的static域或调用static方法。  </li>
+<li>static方法中，不能访问实例变量，不能使用this或super</li>
+<li>调用这个方法时，应该使用类名直接调用，也可以用某一个具体的对象名。<br>例如：Math.random(),Integer.parseInt()等就是类方法，直接用类名进行访问。</li>
+</ol>
+<h2 id="final类"><a href="#final类" class="headerlink" title="final类"></a>final类</h2><ol>
+<li>如果一个类被final修饰符所修饰和限定，说明这个类不能被继承，即不可能有子类。</li>
+<li>final修饰符所修饰的方法，是不能被子类所覆盖的方法。</li>
+<li>final字段及final局部变量<ul>
+<li>它们的值一旦给定，就不能更改</li>
+<li>是只读量，它们能且只能被赋值一次，而不能被赋值多次。</li>
+<li>一个字段被static final两个修饰符所限定时，它可以表示常量</li>
+<li>如Integer.MAX_VALUE(表示最大整数)、Math.PI(表示圆周率)就是这种常量</li>
+</ul>
+</li>
+<li>关于赋值<ul>
+<li>在定义static final域时，若不给顶初始值，则按默认值进行初始化(数值为0，boolean型为false，引用型为null)</li>
+<li>在定义final字段时，若不是static的域，则必须且只能赋值一次，不能缺省<ul>
+<li>这种域的赋值方式有两种<ul>
+<li>一是在定义变量时赋初始值</li>
+<li>二是在每一个构造函数中进行赋值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在定义final局部变量时，也必须且只能赋值一次。它的值可能不是常量，但它的取值在变量存在期间不会改变。<h2 id="abstract"><a href="#abstract" class="headerlink" title="abstract"></a>abstract</h2></li>
+</ul>
+</li>
+<li>abstract类<ul>
+<li>凡是用abstract修饰符修饰的类被称为抽象类</li>
+<li>抽象类不能被实例化</li>
+</ul>
+</li>
+<li>abstract方法<ul>
+<li>被abstract所修饰的方法叫抽象方法，抽象方法的作用在为所有子类定义一个统一的接口。对抽象方法只需声明，而不需实现，即用分号(;)而不适用{}，格式如下：<ul>
+<li>abstract returnType abstractMethod([paramlist]);</li>
+</ul>
+</li>
+<li>抽象类中可以包含抽象方法，也可以不包含abstract方法。但是，一旦某个类中包含了abstract方法，则这个类必须声明为abstract类。</li>
+<li>抽象方法在子类中必须被实现，否则子类仍然是abstract的。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="字段变量与局部变量"><a href="#字段变量与局部变量" class="headerlink" title="字段变量与局部变量"></a>字段变量与局部变量</h2><p>字段变量(field)：在类中定义的变量<br>局部变量(Loval variable)：在方法中定义的参变量<br>从内存的角度看：</p>
+<ul>
+<li>存储位置：字段变量为对象的一部分，存在于堆中，局部变量是存在于栈中</li>
+<li>生命周期不同：字段变量是随着对象的创建而产生的；局部变量是随着调用这个方法时产生的。<ul>
+<li>当方法结束后，局部变量的空间就会释放</li>
+</ul>
+</li>
+<li>初始值：字段变量可以自动赋初值；局部变量须显式赋值  </li>
+</ul>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态是指一个程序中相同给的名字表示不同的含义的情况<br>多态有两种情形：</p>
+<ul>
+<li>编译时多态：<ul>
+<li>重载(overload)(多个同名的不同方法)</li>
+<li>如 p.sayHello();和 p.sayHello(“Wang”);</li>
+</ul>
+</li>
+<li>运行时多态：<ul>
+<li>覆盖(override)(子类对父类方法进行覆盖)</li>
+<li><code>动态绑定(dynamic binding)</code>，也叫<code>虚方法</code>调用(virtual method invoking)</li>
+<li>在调用方法时，程序会正确地调用子类对象的方法</li>
+</ul>
+</li>
+</ul>
+<p>多态的特点大大提高了程序的抽象程度和简洁性  </p>
+<h2 id="上溯造型-upcasting"><a href="#上溯造型-upcasting" class="headerlink" title="上溯造型(upcasting)"></a>上溯造型(upcasting)</h2><p>是把派生类型当作基本类型处理<br><code>Person p = new Student();</code><br><code>void fun(Person p){...}</code><br><code>fun(new Person());</code></p>
+<h2 id="虚方法调用，可以实现运行时的多态"><a href="#虚方法调用，可以实现运行时的多态" class="headerlink" title="虚方法调用，可以实现运行时的多态"></a>虚方法调用，可以实现运行时的多态</h2><ul>
+<li>子类重载了父类方法时，运行时</li>
+<li>运行时系统根据调用该方法的实例的类型来决定选择哪个方法调用</li>
+<li>所有的非final方法都会自动地进行动态绑定</li>
+</ul>
+<hr>
+<h2 id="构造方法-constructor"><a href="#构造方法-constructor" class="headerlink" title="构造方法(constructor)"></a>构造方法(constructor)</h2><ul>
+<li>对象都有构造方法</li>
+<li>如果没有，编译器加一个default构造方法<h3 id="调用本类或父类构造方法"><a href="#调用本类或父类构造方法" class="headerlink" title="调用本类或父类构造方法"></a>调用本类或父类构造方法</h3></li>
+<li>this调用本类的其他构造方法</li>
+<li>super调用直接父类的构造方法</li>
+<li>this或super要放在第一条语句，且只能够有一条</li>
+</ul>
+<p>如果没有this及super，则编译器自动加上super()，即调用直接父类不带参数的构造方法。<br>因为必须令所有父类的构造方法都得到调用，否则整个对象的构建就可能不正确。</p>
+<h2 id="构造方法的执行过程"><a href="#构造方法的执行过程" class="headerlink" title="构造方法的执行过程"></a>构造方法的执行过程</h2><ul>
+<li>调用本类或父类的构造方法，直至最高一层(Object)</li>
+<li>按照声明顺序执行字段的初始化赋值</li>
+<li>执行构造函数中的各语句</li>
+</ul>
+<p><code>先父类构造，再本类成员赋值，最后执行构造方法中的语句</code></p>
+<hr>
+<h1 id="对象清除与垃圾回收"><a href="#对象清除与垃圾回收" class="headerlink" title="对象清除与垃圾回收"></a>对象清除与垃圾回收</h1><h2 id="对象清除"><a href="#对象清除" class="headerlink" title="对象清除"></a>对象清除</h2><p>Java里的对象不需要使用方法消除，Java会自动地清除。<br>自动清除再Java内称为垃圾回收(garbage collection)，对象回收是由Java虚拟机的垃圾回收线程来完成的。<br>System.gc()方法，它是System类的static方法，希望虚拟机再有空的情况下，进行这个垃圾回收，但是它仅仅只是一个建议(suggest)。<br>Java中没有<code>析构方法(destructor)</code>，但Object的finalize()有类似功能</p>
+<ul>
+<li>系统再回收时会自动调用对象的finalize()方法</li>
+<li>protected void finalize() throws Throwable{}</li>
+</ul>
+<p>子类的finalize()方法</p>
+<ul>
+<li>可以再子类的finalize()方法释放系统资源</li>
+<li>一般来说，子类的finalize()方法中应该调用父类的finalize()方法，以保证父类的清理工作能够正常进行。</li>
+</ul>
+<h2 id="try-with-resources"><a href="#try-with-resources" class="headerlink" title="try-with-resources"></a>try-with-resources</h2><p>由于finalize()方法的调用时机并不确定，所以一半不用finalize()<br>关闭打开的文件、清除一些非内存资源等工作需要进行处理<br>可以使用try-with-resources语句<br>对于实现了<code>java.lang.AutoCloseable</code>的对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>(Scanner scanner = <span class="keyword">new</span> Scanner(...))&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>会自动调用其close()方法，相当于</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">finally</span>&#123;</span><br><span class="line">    Scanner.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="内部类与匿名类"><a href="#内部类与匿名类" class="headerlink" title="内部类与匿名类"></a>内部类与匿名类</h2><p>内部类(inner class)是在其他类中的类<br>匿名类(anonymous class)是一种特殊的内部类，它没有类名  </p>
+<h3 id="内部类-Inner-class"><a href="#内部类-Inner-class" class="headerlink" title="内部类(Inner class)"></a>内部类(Inner class)</h3><p>内部类定义：</p>
+<ul>
+<li>将类的定义class xxxx{…}置入一个类的内部即可</li>
+<li>编译器生成xxxx$xxxx这样的class文件</li>
+<li>内部类不能够与外部类同名</li>
+</ul>
+<p>内部类的使用：</p>
+<ul>
+<li>在封装它的类的内部使用内部类，与普通类的使用方式相同</li>
+<li>在其他地方使用<ul>
+<li>类名前要冠以外部类的名字</li>
+<li>在用new创建内部类时，也要在new前面冠以对象变量<br>  内部对象名.new 内部类名(参数)</li>
+</ul>
+</li>
+</ul>
+<p>在内部类中使用外部类得成员：<br>内部类中可以直接访问外部类得字段及方法，即使private也可以。<br>如果内部类中有与外部类同名得字段或方法，则可以用<code>外部类名.this.字段及方法</code>  </p>
+<h3 id="内部类的修饰符"><a href="#内部类的修饰符" class="headerlink" title="内部类的修饰符"></a>内部类的修饰符</h3><p>内部类与类中的字段、方法一样是外部类的成员，它的前面也可以有访问控制符和其他修饰符</p>
+<ul>
+<li>访问控制符：public，protected，默认及private<ul>
+<li>注：外部类只能够使用public修饰或者默认</li>
+</ul>
+</li>
+<li>final，abstract</li>
+</ul>
+<h3 id="static修饰符"><a href="#static修饰符" class="headerlink" title="static修饰符"></a>static修饰符</h3><p>用static修饰内部类，表明该内部类实际是一种外部类</p>
+<ul>
+<li>因为它与外部类的实例无关</li>
+<li>有人认为static的类是嵌套类（nested class），不是内部类inner class</li>
+</ul>
+<p>static类在使用时：</p>
+<ul>
+<li>实例化static类时，在new前面不需要用对象实例变量</li>
+<li>static类中不能访问其外部类的非static的字段及方法，既只能够访问static成员。</li>
+<li>static方法中不能访问非static的域及方法，也不能够不带前缀地new一个非static的内部类。</li>
+</ul>
+<h3 id="局部类-local-class"><a href="#局部类-local-class" class="headerlink" title="局部类(local class)"></a>局部类(local class)</h3><p>在一个方法中定义的类，这种类称为”方法中的内部类”，或者叫局部类(local class)<br>和局部变量一样，方法中的内部类<br>不能用public, private, protected, static修饰，但是可以被final或者abstract修饰<br>可以访问其外部类的成员<br>不能够访问该方法的局部变量，除非时final局部变量。  </p>
+<h3 id="匿名类-anonymous-class"><a href="#匿名类-anonymous-class" class="headerlink" title="匿名类(anonymous class)"></a>匿名类(anonymous class)</h3><p>是一种特殊的内部类，它没有类名，在定义类的同时就生成该对象的一个实例<br>是一个”一次性使用”的类  </p>
+<h4 id="匿名类的使用"><a href="#匿名类的使用" class="headerlink" title="匿名类的使用"></a>匿名类的使用</h4><ol>
+<li>不取名字，直接用其父类或接口的名字<ul>
+<li>也就是说，该类是父类的子类，或者实现了一个接口</li>
+<li>编译器生成 xxxxx$1之类的名字</li>
+</ul>
+</li>
+<li>类的定义的同时就创建实例，即类的定义前面有一个new<ul>
+<li>new类名或接口名(){…}</li>
+<li>不使用关键词class，也不适用extends及implements</li>
+</ul>
+</li>
+<li>在构造对象时使用父类构造方法<ul>
+<li>不能够定义构造方法，因为它没有名字</li>
+<li>如果new对象时，要带参数，则使用父类的构造方法</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="Lambda表达式-λ-expression"><a href="#Lambda表达式-λ-expression" class="headerlink" title="Lambda表达式(λ expression)"></a>Lambda表达式(λ expression)</h2><p>基本写法：</p>
+<ul>
+<li>(参数)-&gt;结果</li>
+<li>如(String s)-&gt;s.length()</li>
+<li>如 x -&gt; x * x</li>
+<li>如 ()-&gt;{System.out.println(“aaa”);}</li>
+</ul>
+<p>大体上相当于其他语言的”匿名函数”或”函数指针”<br>在Java中它实际上是”匿名类的一个实例”</p>
+<p>在线程的例子中：<code>new Thread( ()-&gt;{...}).start();</code><br>在积分的例子中：  </p>
+<ul>
+<li><code>d = Integral( x-&gt;Math.sin(x), 0, 1, EPS);</code></li>
+<li><code>d = Integral( x-&gt;x*x, 0, 1, EPS);</code></li>
+<li><code>d = Integral( x-&gt;1, 0, 1, EPS);</code></li>
+</ul>
+<p>在按钮时间处理中：<code>btn.addActionListener( e-&gt;{...});</code>  </p>
+<h3 id="能携程Lambda的接口的条件"><a href="#能携程Lambda的接口的条件" class="headerlink" title="能携程Lambda的接口的条件"></a>能携程Lambda的接口的条件</h3><p>由于Lambda只能表示一个函数，所以能写成Lambda的接口<code>要求包含且最多只能有一个抽象函数</code>，这样的接口可以(但不强求)用注记</p>
+<ul>
+<li>@FunctionalInterface来表示。称为函数式接口</li>
+<li>如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Fun</span></span>&#123; <span class="function"><span class="keyword">double</span> <span class="title">fun</span><span class="params">( <span class="keyword">double</span> x)</span></span>;&#125;</span><br></pre></td></tr></table></figure>
+Lambda表达式将代码也当成数据来处理，所以它实现了一定的函数式变成的一个功能  </li>
+</ul>
+<hr>
+<h2 id="新的语法"><a href="#新的语法" class="headerlink" title="新的语法"></a>新的语法</h2><p>从JDK1.5起，增加了一些新的语法，大部分是编译器自动翻译的，称为Complier sugar</p>
+<h3 id="基本类型的包装类"><a href="#基本类型的包装类" class="headerlink" title="基本类型的包装类"></a>基本类型的包装类</h3><p>它将基本类型(primitive type)包装成Object(引用类型)<br>如int -&gt; Interger<br>共8类:<code>Boolean|Byte|Short|Character|Integer|Long|Float|Double</code><br>Intergar I = new Integer(10);  </p>
+<h3 id="装箱与拆箱"><a href="#装箱与拆箱" class="headerlink" title="装箱与拆箱"></a>装箱与拆箱</h3><p>装箱(Boxing)：Integer I = 10;<br>拆箱(Unboxing)：int i = I;<br>实际译为：</p>
+<ul>
+<li>Integer I = Integer.valueOf(10);</li>
+<li>int i = I.intValue();</li>
+</ul>
+<p>主要方便用于集合中，如：<br><code>Object [] ary = {1,&quot;aaa&quot;};</code></p>
+<h3 id="枚举-enum"><a href="#枚举-enum" class="headerlink" title="枚举(enum)"></a>枚举(enum)</h3><p>是一种特殊的class类型<br>在简单的情况下，用法与其他语言的enum相似</p>
+<ul>
+<li><code>enum Light{ Red, Yellow, Green;};</code></li>
+<li><code>Light light = Light.Red;</code><br>但实际上，它生成了 class Light extends java.lang.Enum  <h4 id="自定义枚举"><a href="#自定义枚举" class="headerlink" title="自定义枚举"></a>自定义枚举</h4>可以在enum定义体中，添加字段、方法、构造方法<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Direction&#123;</span><br><span class="line">    EAST(<span class="string">"东"</span>,<span class="number">1</span>),SOUTH(<span class="string">"南"</span>,<span class="number">2</span>),</span><br><span class="line">    WEST(<span class="string">"西"</span>,<span class="number">3</span>),NORTH(<span class="string">"北"</span>,<span class="number">4</span>);</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Direction</span><span class="params">(Stirng desc, <span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.desc = desc;</span><br><span class="line">        <span class="keyword">this</span>.num = num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> String desc;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> num;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getDesc</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> desc;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNum</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="注解-annotation"><a href="#注解-annotation" class="headerlink" title="注解(annotation)"></a>注解(annotation)</h2>又称为注记、标记、标注、注释(不同于comments)<br>是在各种语法要素上加上附加信息，以供编译器或其他程序使用<br>所有的注解都是java.lang.annotation.Annotation的子类  <h3 id="常用的注解"><a href="#常用的注解" class="headerlink" title="常用的注解"></a>常用的注解</h3></li>
+<li>@Override 表示覆盖父类的方法</li>
+<li>@Deprecated 表示过时的方法</li>
+<li>@SuppressWarnings 表示让编译器不产生警告</li>
+</ul>
+<p>自定义注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Author&#123;</span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="没有指针的Java"><a href="#没有指针的Java" class="headerlink" title="没有指针的Java"></a>没有指针的Java</h2><h3 id="引用与指针"><a href="#引用与指针" class="headerlink" title="引用与指针"></a>引用与指针</h3><p>引用(reference)实质就是指针(pointer)<br>但是它是受控的、安全的  </p>
+<h3 id="C语言指针在Java中的体现"><a href="#C语言指针在Java中的体现" class="headerlink" title="C语言指针在Java中的体现"></a>C语言指针在Java中的体现</h3><ol>
+<li>传地址 -&gt; 对象<ul>
+<li>引用类型，引用本身就相当于指针</li>
+<li>可以用来修改对象的属性、调用对象的方法</li>
+<li>基本类型：没有对应的</li>
+</ul>
+</li>
+<li>指针运算 -&gt; 数组<ul>
+<li>*(p+5) 则可以用args[5]</li>
+</ul>
+</li>
+<li>函数指针 -&gt; 接口、Lambda表达式<ul>
+<li>例如：求积分，线程，回调函数，事件处理</li>
+</ul>
+</li>
+<li>指向节点的指针 -&gt; 对象的引用<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;</span><br><span class="line">    Object data;</span><br><span class="line">    Node next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>使用JNI</li>
+</ol>
+<ul>
+<li>Java Native Interface(JNI)</li>
+<li>它允许Java代码和其他语言写的代码进行交互</li>
+</ul>
+<h2 id="相等还是不相等"><a href="#相等还是不相等" class="headerlink" title="相等还是不相等 =="></a>相等还是不相等 ==</h2><p>基本类型是<code>值相等</code><br>引用类型是<code>引用相等</code>  </p>
+<h3 id="基本类型的相等"><a href="#基本类型的相等" class="headerlink" title="基本类型的相等"></a>基本类型的相等</h3><ul>
+<li>数值类型：转换后比较</li>
+<li>浮点数：最好不直接用==</li>
+<li>Double.NAN == Double.NAN结果为false</li>
+<li>bolean型无法与int相比较<br><img src="03.png" alt=""><br>原因是-128到+127是有缓存的，所以引用的是同一个对象<h3 id="枚举、引用对象是否相等"><a href="#枚举、引用对象是否相等" class="headerlink" title="枚举、引用对象是否相等"></a>枚举、引用对象是否相等</h3>枚举类型：内部进行了唯一实例化，所以可以直接判断<br>引用对象：</li>
+<li>是直接看两个引用给是否一样</li>
+<li>如果要判断内容是否一样，则要重写equals方法</li>
+<li>如果重写equals方法，则最好重写hashCode()方法<h3 id="String对象的特殊性"><a href="#String对象的特殊性" class="headerlink" title="String对象的特殊性"></a>String对象的特殊性</h3>String对象：</li>
+<li>判断相等，一定不要用==，要用equals</li>
+<li>但是字符串常量(String literal)及字符串常量会进行内部化(interned)，相同的字符串常量是==的<br><img src="04.png" alt=""></li>
+</ul>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2020/02/24/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/6th-Java%E6%A0%B8%E5%BF%83%E7%B1%BB/" style="float: left;">
+        ← 6th.Java核心类
+    </a>
+    
+    
+    <a class="pull-right" href="/2020/02/24/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/4th-%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C/">
+        4st.数组操作 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By Fenix-Cui. All Rights Reserved.
+                </p>
+                <p>Theme By <a href="//go.kieran.top" target="_blank" rel="noopener" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/Fenix-Cui/" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://twitter.com/" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://www.facebook.com/" title="Facebook" target="_blank"><i class="icon-facebook"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="https://google.com/" title="Google-Plus" target="_blank"><i class="icon-google-plus"></i></a>&nbsp;</li>
+                    
+                    
+                    <li><a href="http://weibo.com/" title="Sina-Weibo" target="_blank"><i class="icon-sina-weibo"></i></a>&nbsp;</li>
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"superSample":2,"width":150,"height":300,"position":"left","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2},"log":false});</script></body>
+</html>
