@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="format-detection" content="telephone=no,email=no,address=no">
+<meta name="theme-color" content="#050b18">
+<!-- 微信/QQ 内核：锁定竖屏 + 强制 webkit 渲染 + 禁用字体缩放 -->
+<meta name="x5-orientation" content="portrait">
+<meta name="screen-orientation" content="portrait">
+<meta name="renderer" content="webkit">
+<meta name="force-rendering" content="webkit">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>2026年鸡西市网络安全宣传周 · 预热</title>
+<!-- 分享卡（非微信渠道 / 爬虫抓取时使用） -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="2026年鸡西市网络安全宣传周｜五要五不要">
+<meta property="og:description" content="网络安全为人民，网络安全靠人民">
+<meta property="og:image" content="share.png">
+<meta name="description" content="2026年鸡西市网络安全宣传周预热：一周活动抢先看、网络安全五要五不要、知识自测与倡议书生成。">
+<style>
+:root{
+  --bg:#050b18;
+  --cyan:#37e6ff;
+  --blue:#4d7cff;
+  --green:#2fe3a0;
+  --red:#ff5d73;
+  --amber:#ffc247;
+  --txt:#eaf2ff;
+  --sub:#90a6c8;
+  --card:rgba(255,255,255,.055);
+  --line:rgba(255,255,255,.10);
+  --wxb:0px;              /* 微信 iOS 底部工具栏预留高度，由 JS 注入 */
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+html,body{height:100%;height:calc(var(--vh,1vh) * 100);margin:0;overflow:hidden;background:#02060f;color:var(--txt);
+  overscroll-behavior:none;
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Source Han Sans SC",system-ui,sans-serif;}
+body{display:flex;align-items:center;justify-content:center}
+/* 微信 iOS：底部存在前进/后退工具栏，整体抬升 */
+html.wx-ios{--wxb:54px}
+/* 可点击元素禁止长按选中/复制，避免微信长按菜单干扰交互 */
+button,.opt,.rule-h,.dots i,.nav,.btn{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+
+/* ---------- 舞台 / 手机框 ---------- */
+.stage{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.phone{position:relative;width:100%;height:100%;max-width:430px;overflow:hidden;background:#050b18;isolation:isolate}
+@media (min-width:520px) and (min-height:700px){
+  .phone{height:92vh;max-height:940px;border-radius:30px;
+    box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.07),0 0 0 11px #0b1424}
+}
+
+/* ---------- 背景 ---------- */
+.bg{position:absolute;inset:0;z-index:0;overflow:hidden;
+  background:radial-gradient(120% 80% at 50% -10%,#123a63 0%,#0a1730 45%,#050b18 100%)}
+.bg .grid{position:absolute;inset:-50% -20%;
+  background-image:linear-gradient(rgba(90,170,255,.07) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(90,170,255,.07) 1px,transparent 1px);
+  background-size:44px 44px;transform:perspective(500px) rotateX(58deg);opacity:.55}
+.glow{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;animation:float 12s ease-in-out infinite}
+.g1{width:280px;height:280px;left:-80px;top:8%;background:#1d6bff}
+.g2{width:240px;height:240px;right:-70px;top:32%;background:#00c2b3;animation-delay:-4s}
+.g3{width:300px;height:300px;left:10%;bottom:-100px;background:#7a3cff;animation-delay:-8s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(18px,-26px) scale(1.12)}}
+
+/* ---------- 顶栏 ---------- */
+.topbar{position:absolute;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  padding:calc(env(safe-area-inset-top) + 14px) 18px 10px;font-size:12px;letter-spacing:.5px;color:var(--sub)}
+.brand{display:flex;align-items:center;gap:6px;color:#bcd4f5}
+.brand i{width:5px;height:5px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);
+  animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.25}}
+.pg{font-variant-numeric:tabular-nums;color:#b9cbe8}
+.pg b{color:var(--cyan);font-weight:600}
+
+/* ---------- 页面容器 ---------- */
+.deck{position:absolute;inset:0;z-index:10;display:flex;
+  transition:transform .58s cubic-bezier(.22,.85,.2,1);will-change:transform}
+.page{flex:0 0 100%;width:100%;height:100%;overflow-y:auto;overflow-x:hidden;
+  overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+  padding:calc(env(safe-area-inset-top) + 54px) 20px calc(env(safe-area-inset-bottom) + 62px + var(--wxb));
+  display:flex;flex-direction:column;justify-content:flex-start;scrollbar-width:none}
+.page > *:first-child{margin-top:auto}
+.page > *:last-child{margin-bottom:auto}
+.page::-webkit-scrollbar{display:none}
+.deck.anim .page{opacity:.25;transition:opacity .4s}
+.deck .page.cur{opacity:1}
+
+/* ---------- 通用元素 ---------- */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+  font-size:12px;color:var(--cyan);letter-spacing:2px;margin-bottom:12px}
+.eyebrow::before{content:"";width:22px;height:1px;background:linear-gradient(90deg,transparent,var(--cyan))}
+h1.title{font-size:30px;line-height:1.25;margin:0 0 10px;font-weight:800;letter-spacing:1px}
+h2.title{font-size:24px;line-height:1.3;margin:0 0 6px;font-weight:800;letter-spacing:.5px}
+.grad{background:linear-gradient(100deg,#7fe9ff,#4d7cff 60%,#9d7bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:13px;line-height:1.8;color:var(--sub);margin:0 0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;backdrop-filter:blur(8px)}
+
+/* ---------- 封面 ---------- */
+.cover{text-align:left}
+.cover h1{font-size:38px;letter-spacing:3px;margin-bottom:14px}
+.cover .sub{font-size:14px;color:#c9dcff;line-height:1.9;margin-bottom:22px;letter-spacing:1px}
+.cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
+.cd .u{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:12px;padding:12px 4px;text-align:center}
+.cd .n{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;
+  background:linear-gradient(180deg,#fff,#7fe9ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cd .l{font-size:10px;color:var(--sub);margin-top:4px;letter-spacing:1px}
+.cd-label{font-size:12px;color:var(--sub);margin:0 0 10px;letter-spacing:1px}
+.cd-label b{color:var(--amber);font-weight:600}
+.cd-date{margin:16px 0 20px;text-align:center;font-size:13px;color:#bcd4f5;letter-spacing:1px}
+.cd-date b{color:var(--amber);font-weight:700}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.badge{font-size:11px;padding:6px 11px;border-radius:999px;border:1px solid rgba(55,230,255,.35);
+  color:#8fe6ff;background:rgba(55,230,255,.08)}
+
+/* ---------- 日程 ---------- */
+.tl{list-style:none;margin:14px 0 16px;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:52px;top:10px;bottom:10px;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(55,230,255,.4),transparent)}
+.tl li{display:flex;align-items:center;gap:12px;padding:6px 0;font-size:13px}
+.tl .d{flex:0 0 40px;text-align:right;color:var(--cyan);font-weight:700;font-variant-numeric:tabular-nums}
+.tl .dot{position:relative;flex:0 0 8px;height:8px;border-radius:50%;background:#0b1a30;
+  border:1.5px solid rgba(55,230,255,.6);z-index:1}
+.tl li.on .dot{background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.tl .e{color:#d5e4fb}
+.tl li.on .e{color:#fff;font-weight:600}
+.tl .e small{display:block;color:var(--sub);font-size:11px;font-weight:400;margin-top:1px}
+
+/* ---------- 五要 / 五不要 ---------- */
+.rules{display:flex;flex-direction:column;gap:9px;margin-top:16px}
+.rule{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  transition:border-color .3s,background .3s}
+.rule-h{width:100%;display:flex;align-items:center;gap:12px;padding:13px 14px;background:none;border:0;
+  color:inherit;font-family:inherit;font-size:14.5px;font-weight:600;text-align:left;cursor:pointer}
+.rule-h .ico{flex:0 0 32px;height:32px;border-radius:9px;display:grid;place-items:center}
+.rule-h .ico svg{width:17px;height:17px;stroke-width:1.8;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.rule-h .t{flex:1;letter-spacing:.5px}
+.rule-h .n{font-size:11px;color:var(--sub);font-weight:700;margin-right:2px}
+.rule-h .arw{flex:0 0 14px;height:14px;stroke:var(--sub);stroke-width:2;fill:none;stroke-linecap:round;
+  stroke-linejoin:round;transition:transform .3s,stroke .3s}
+.rule-b{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.3,.8,.3,1)}
+.rule-b p{margin:0;padding:0 14px 15px 58px;font-size:12.5px;line-height:1.85;color:var(--sub)}
+.rule.open .rule-b{max-height:220px}
+.rule.open{border-color:var(--ac);background:var(--acbg)}
+.rule.open .arw{transform:rotate(180deg);stroke:var(--ac)}
+.rule.open .rule-h .t{color:#fff}
+/* 要 = 青绿 */
+.do{--ac:#2fe3a0;--acbg:rgba(47,227,160,.09)}
+.do .ico{background:rgba(47,227,160,.14);color:var(--green)}
+/* 不要 = 红 */
+.dont{--ac:#ff5d73;--acbg:rgba(255,93,115,.09)}
+.dont .ico{background:rgba(255,93,115,.14);color:var(--red)}
+.tagline{font-size:12.5px;color:var(--sub);margin:14px 0 0;line-height:1.8;
+  padding-left:11px;border-left:2px solid rgba(255,255,255,.18)}
+
+/* ---------- 答题 ---------- */
+.quiz-q{font-size:17px;font-weight:700;line-height:1.6;margin:18px 0 16px;letter-spacing:.5px}
+.quiz-q em{font-style:normal;color:var(--cyan);margin-right:6px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:center;gap:11px;padding:13px 14px;border-radius:13px;cursor:pointer;
+  background:var(--card);border:1px solid var(--line);font-size:13.5px;line-height:1.5;
+  transition:transform .16s,border-color .25s,background .25s}
+.opt:active{transform:scale(.985)}
+.opt .k{flex:0 0 22px;height:22px;border-radius:6px;display:grid;place-items:center;font-size:11px;
+  font-weight:700;background:rgba(255,255,255,.07);color:var(--sub)}
+.opt.right{border-color:rgba(47,227,160,.7);background:rgba(47,227,160,.13)}
+.opt.right .k{background:var(--green);color:#04140d}
+.opt.wrong{border-color:rgba(255,93,115,.7);background:rgba(255,93,115,.12)}
+.opt.wrong .k{background:var(--red);color:#fff}
+.opt.locked{cursor:default}
+.explain{margin-top:14px;font-size:12.5px;line-height:1.8;color:#a9bfe0;
+  padding:11px 13px;border-radius:12px;background:rgba(55,230,255,.07);border:1px solid rgba(55,230,255,.22);
+  display:none}
+.explain.show{display:block;animation:pop .35s}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}}
+.score{margin-top:18px;text-align:center}
+.score .big{font-size:52px;font-weight:800;line-height:1;
+  background:linear-gradient(180deg,#fff,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.score .say{font-size:13px;color:var(--sub);margin-top:8px;line-height:1.8}
+
+/* ---------- 倡议页 ---------- */
+.field{margin-top:16px}
+.field input{width:100%;padding:13px 15px;border-radius:13px;font-size:14px;color:var(--txt);
+  background:rgba(255,255,255,.06);border:1px solid var(--line);outline:none;font-family:inherit}
+.field input:focus{border-color:rgba(55,230,255,.55);background:rgba(55,230,255,.06)}
+.field input::placeholder{color:#5f7292}
+.btn{margin-top:14px;width:100%;padding:15px;border:0;border-radius:14px;font-size:15px;font-weight:700;
+  letter-spacing:1px;color:#04121f;cursor:pointer;font-family:inherit;
+  background:linear-gradient(100deg,#7fe9ff,#37b6ff 55%,#4d7cff);box-shadow:0 10px 26px rgba(55,182,255,.28);
+  transition:transform .16s}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:none;color:var(--sub);border:1px solid var(--line);box-shadow:none;font-weight:500;margin-top:10px}
+.poster-wrap{margin-top:16px;display:none}
+.poster-wrap.show{display:block;animation:pop .45s}
+.poster-wrap img{width:100%;border-radius:16px;display:block;box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.tip{font-size:11.5px;color:var(--sub);text-align:center;margin-top:10px}
+
+/* ---------- 底部导航 ---------- */
+.dots{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom) + 20px + var(--wxb));z-index:20;
+  display:flex;justify-content:center;gap:7px}
+.dots i{width:6px;height:6px;border-radius:99px;background:rgba(255,255,255,.22);cursor:pointer;
+  transition:all .35s}
+.dots i.on{width:20px;background:linear-gradient(90deg,var(--cyan),var(--blue))}
+.hint{position:absolute;bottom:calc(env(safe-area-inset-bottom) + 38px + var(--wxb));left:0;right:0;z-index:19;
+  text-align:center;font-size:11.5px;color:var(--sub);letter-spacing:1px;
+  animation:bob 1.8s ease-in-out infinite;pointer-events:none}
+@keyframes bob{50%{transform:translateX(6px);opacity:.5}}
+.nav{position:absolute;z-index:21;bottom:calc(env(safe-area-inset-bottom) + 44px + var(--wxb));width:34px;height:34px;
+  border-radius:50%;display:grid;place-items:center;cursor:pointer;
+  background:rgba(255,255,255,.06);border:1px solid var(--line);opacity:0;pointer-events:none;transition:opacity .3s}
+.nav.show{opacity:1;pointer-events:auto}
+.nav svg{width:14px;height:14px;stroke:var(--sub);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.nav.prev{left:14px}
+.nav.prev svg{transform:rotate(180deg)}
+.nav.next{right:14px}
+.toast{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:60;
+  background:rgba(10,22,40,.95);border:1px solid var(--line);color:var(--txt);
+  padding:11px 20px;border-radius:12px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .3s}
+.toast.show{opacity:1}
+
+/* ---------- 微信分享引导遮罩 ---------- */
+.wxguide{position:absolute;inset:0;z-index:80;display:none;
+  background:rgba(2,6,15,.86);backdrop-filter:blur(3px)}
+.wxguide.show{display:block;animation:pop .3s}
+.wxg-arrow{position:absolute;top:calc(env(safe-area-inset-top) + 4px);right:10px;width:104px;height:104px;
+  fill:none;stroke:#37e6ff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;
+  animation:bobArrow 1.6s ease-in-out infinite}
+@keyframes bobArrow{50%{transform:translate(5px,-5px);opacity:.55}}
+.wxg-text{position:absolute;top:42%;left:0;right:0;transform:translateY(-50%);
+  text-align:center;font-size:16px;line-height:2.1;color:#d5e6ff;letter-spacing:1px}
+.wxg-text b{color:#37e6ff;font-weight:700}
+.wxg-btn{position:absolute;bottom:calc(env(safe-area-inset-bottom) + 90px);left:50%;transform:translateX(-50%);
+  padding:12px 42px;border-radius:999px;border:1px solid rgba(55,230,255,.5);
+  background:rgba(55,230,255,.12);color:#8fe6ff;font-size:14px;letter-spacing:2px;cursor:pointer;font-family:inherit}
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M17 4l3 3-2 2-3-3"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v4h-4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5.5c0 4.5-3 7.7-7 9.5-4-1.8-7-5-7-9.5V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 18h10a3.5 3.5 0 0 0 .4-7A5 5 0 0 0 8 9.6A4.2 4.2 0 0 0 7 18z"/><path d="M12 21v-6M9.5 17.5L12 15l2.5 2.5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M9.5 14.5l5-5"/><path d="M12.5 7.5l1.8-1.8a3.5 3.5 0 0 1 5 5L17.5 12.5"/><path d="M11.5 16.5l-1.8 1.8a3.5 3.5 0 0 1-5-5L6.5 11.5"/><path d="M3 3l18 18"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/><path d="M3 3l18 18"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM20 14v3M14 20h7M3 3l18 18"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8 16a6 6 0 0 1 8 0"/><circle cx="12" cy="19.5" r="1"/><path d="M3 3l18 18"/></symbol>
+  <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="11" rx="1.5"/><path d="M3 13h18M12 9v11"/><path d="M12 9S10 4 7.5 5.5 10 9 12 9zM12 9s2-5 4.5-3.5S14 9 12 9z"/><path d="M3 3l18 18"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+</svg>
+
+<div class="stage">
+<div class="phone">
+
+  <div class="bg"><div class="grid"></div>
+    <span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span>
+  </div>
+
+  <header class="topbar">
+    <span class="brand"><i></i>中共鸡西市委网信办</span>
+    <span class="pg"><b id="pgNow">01</b> / 06</span>
+  </header>
+
+  <div class="deck" id="deck">
+
+    <!-- ============ 01 封面 ============ -->
+    <section class="page cover">
+      <span class="eyebrow">2026 · 鸡西市</span>
+      <h1 class="title grad">网络安全<br>宣传周</h1>
+      <p class="sub">网络安全为人民，网络安全靠人民<br>共建网络安全，共享网络文明</p>
+      <div class="badges">
+        <span class="badge">五要五不要</span>
+        <span class="badge">全民反诈</span>
+        <span class="badge">个人信息保护</span>
+      </div>
+      <p class="cd-label">距离网络安全宣传周开幕还有</p>
+      <div class="cd" id="cd">
+        <div class="u"><div class="n" id="cdD">--</div><div class="l">天</div></div>
+        <div class="u"><div class="n" id="cdH">--</div><div class="l">时</div></div>
+        <div class="u"><div class="n" id="cdM">--</div><div class="l">分</div></div>
+        <div class="u"><div class="n" id="cdS">--</div><div class="l">秒</div></div>
+      </div>
+      <p class="cd-date">开幕式时间 <b>2026年9月14日 9:00</b></p>
+      <p class="lead" style="margin:0">左右滑动，解锁「五要五不要」网络安全守则 →</p>
+    </section>
+
+    <!-- ============ 02 预热日程 ============ -->
+    <section class="page">
+      <span class="eyebrow">预热抢先看</span>
+      <h2 class="title">一周活动<span class="grad">全知道</span></h2>
+      <p class="lead">2026年鸡西市网络安全宣传周拟定于 <b style="color:var(--amber)">9月14日—20日</b> 举行，开幕式定于9月14日上午9时。下列主题日安排以正式通知为准。</p>
+      <div class="card" style="padding:14px 16px 6px">
+        <ul class="tl">
+          <li class="on"><span class="d">9.14</span><span class="dot"></span><span class="e">开幕式暨主题日<small>主会场启动 · 成果展示</small></span></li>
+          <li><span class="d">9.15</span><span class="dot"></span><span class="e">校园日<small>网络安全进课堂</small></span></li>
+          <li><span class="d">9.16</span><span class="dot"></span><span class="e">电信日<small>反诈专线 · 实名宣传</small></span></li>
+          <li><span class="d">9.17</span><span class="dot"></span><span class="e">法治日<small>典型案例 · 以案释法</small></span></li>
+          <li><span class="d">9.18</span><span class="dot"></span><span class="e">金融日<small>防范非法集资与电信诈骗</small></span></li>
+          <li><span class="d">9.19</span><span class="dot"></span><span class="e">青少年日<small>绿色上网 · 防沉迷</small></span></li>
+          <li><span class="d">9.20</span><span class="dot"></span><span class="e">个人信息保护日<small>APP合规 · 隐私体检</small></span></li>
+        </ul>
+      </div>
+      <button class="btn" id="btnRemind">提醒我参加开幕式</button>
+    </section>
+
+    <!-- ============ 03 五要 ============ -->
+    <section class="page">
+      <span class="eyebrow">守则 · 上篇</span>
+      <h2 class="title">网络安全<span class="grad">五要</span></h2>
+      <p class="lead">点开每一条，看清该怎么做。</p>
+      <div class="rules" id="doList"></div>
+      <p class="tagline">做到「五要」，就是给自己的数字生活上五把锁。</p>
+    </section>
+
+    <!-- ============ 04 五不要 ============ -->
+    <section class="page">
+      <span class="eyebrow">守则 · 下篇</span>
+      <h2 class="title">网络安全<span class="grad" style="background:linear-gradient(100deg,#ffb0bd,#ff5d73 60%,#ff9a3c);-webkit-background-clip:text;background-clip:text;color:transparent">五不要</span></h2>
+      <p class="lead">这五条，是骗子最怕你记住的红线。</p>
+      <div class="rules" id="dontList"></div>
+      <p class="tagline">守住「五不要」，绝大多数骗局都近不了身。</p>
+    </section>
+
+    <!-- ============ 05 答题 ============ -->
+    <section class="page">
+      <span class="eyebrow">互动 · 自测</span>
+      <h2 class="title">网络安全<span class="grad">小考</span></h2>
+      <div id="quizBox">
+        <p class="lead" style="margin:10px 0 0">共5题，答完看看你能拿多少分。</p>
+        <div class="quiz-q" id="qText"></div>
+        <div class="opts" id="qOpts"></div>
+        <div class="explain" id="qExp"></div>
+      </div>
+      <div class="score" id="scoreBox" style="display:none">
+        <div class="big" id="scoreNum">0</div>
+        <div class="say" id="scoreSay"></div>
+        <button class="btn ghost" id="btnAgain">再做一次</button>
+      </div>
+    </section>
+
+    <!-- ============ 06 倡议 ============ -->
+    <section class="page">
+      <span class="eyebrow">倡议 · 接力</span>
+      <h2 class="title">我是网络安全<span class="grad">守护者</span></h2>
+      <p class="lead">填写你的名字，生成专属倡议书，长按保存并分享给身边的人。</p>
+      <div class="field">
+        <input id="nameInput" type="text" maxlength="10" placeholder="请输入你的称呼，如：网络安全守护者">
+      </div>
+      <button class="btn" id="btnPoster">生成我的倡议书</button>
+      <div class="poster-wrap" id="posterWrap">
+        <img id="posterImg" alt="网络安全倡议书">
+        <p class="tip" id="posterTip">长按上方图片保存到相册 · 分享给家人朋友</p>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="nav prev" id="navPrev"><svg><use href="#i-chev"/></svg></div>
+  <div class="nav next" id="navNext"><svg style="transform:rotate(180deg)"><use href="#i-chev"/></svg></div>
+  <div class="hint" id="hint">← 左右滑动 →</div>
+  <div class="dots" id="dots"></div>
+  <div class="toast" id="toast"></div>
+
+  <div class="wxguide" id="wxGuide">
+    <svg class="wxg-arrow" viewBox="0 0 104 104">
+      <path d="M18 92 C24 52 44 34 82 28"/>
+      <path d="M70 18l14 8-8 15"/>
+    </svg>
+    <p class="wxg-text">点击右上角 <b>「···」</b><br>发送给朋友 / 分享到朋友圈<br>让更多人记住「五要五不要」</p>
+    <button class="wxg-btn" id="wxGuideClose">我知道了</button>
+  </div>
+
+</div>
+</div>
+
+<script>
+/* ================= 配置（改这里即可） ================= */
+const CFG = {
+  city: '鸡西市',
+  year: '2026',
+  slogan: '网络安全为人民，网络安全靠人民',
+  openAt: '2026-09-14T09:00:00',      // 开幕式时间（9月14日 09:00）
+  org: '中共鸡西市委网络安全和信息化委员会办公室',
+  /* ---- 微信相关 ---- */
+  wx: {
+    sdkEnabled: true,               // 需要后端提供签名接口；没有后端时设为 false 也能正常浏览
+    signUrl: 'api/wx-sign',         // 签名接口（相对路径或完整 https 地址）
+    shareTitle: '2026年鸡西市网络安全宣传周｜五要五不要',
+    shareDesc:  '网络安全为人民，网络安全靠人民。一周活动抢先看，五要五不要记心间。',
+    shareImg:   'share.png'         // 300×300 分享缩略图，必须是同域名下的绝对地址
+  }
+};
+
+/* ================= 环境适配（微信 WebView） ================= */
+const UA = navigator.userAgent.toLowerCase();
+const IS_WX = /micromessenger/i.test(navigator.userAgent);
+const IS_IOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+// 修复移动端 100vh 抖动（微信地址栏/工具栏收起展开）
+function setVH(){ document.documentElement.style.setProperty('--vh', (window.innerHeight*0.01)+'px'); }
+setVH(); window.addEventListener('resize', setVH); window.addEventListener('orientationchange', ()=>setTimeout(setVH,250));
+// iOS 微信底部有前进/后退工具栏，抬高底部元素
+if(IS_WX && IS_IOS) document.documentElement.classList.add('wx-ios');
+// 阻止微信内整体橡皮筋回弹（页面自身是 fixed 布局，只允许 .page 内部滚动）
+document.addEventListener('touchmove', e=>{
+  if(!e.target.closest || !e.target.closest('.page')) { if(e.cancelable) e.preventDefault(); }
+}, {passive:false});
+// og 标签改为绝对地址（给 QQ/微博等其它渠道的爬虫抓取用；微信分享卡片由 JS-SDK 负责）
+(()=>{ try{
+  const og = document.querySelector('meta[property="og:image"]');
+  if(og) og.setAttribute('content', new URL(CFG.wx.shareImg, location.href).href);
+  const u = document.querySelector('meta[property="og:url"]');
+  if(u) u.setAttribute('content', location.href.split('#')[0]);
+}catch(e){} })();
+
+/* ================= 五要 / 五不要 ================= */
+const DO = [
+  {ic:'i-refresh', t:'要定期更新系统与应用', d:'及时安装官方补丁，关闭不必要的端口与共享，让漏洞无处可钻。手机、路由器同样别忘升级。'},
+  {ic:'i-key',     t:'要设置强密码并开启多重验证', d:'密码不少于8位，大小写字母+数字+符号组合，不同账号绝不重复使用；微信、邮箱、支付类账号务必开启二次验证。'},
+  {ic:'i-shield',  t:'要通过官方渠道下载软件', d:'认准官网与正规应用商店，拒绝来历不明的安装包、激活工具和"破解版"，安装前留意权限申请是否合理。'},
+  {ic:'i-cloud',   t:'要定期备份重要数据', d:'重要文件坚持"一份在线、一份离线、一份异地"，遇到勒索病毒或设备丢失也不慌。'},
+  {ic:'i-search',  t:'要先核实再转发', d:'看到"紧急通知""内部消息""不转不是XX人"，先到政府官网、官方媒体核实，不做谣言的二传手。'}
+];
+const DONT = [
+  {ic:'i-link',  t:'不点击陌生链接', d:'短信、邮件、群聊里的可疑链接一律不点。中奖、退款、违章、ETC失效，都是常见的钓鱼钩子。'},
+  {ic:'i-eye',   t:'不透露验证码和密码', d:'任何索要验证码的"客服""警官""领导""熟人"，一律是骗子。验证码就是密码，谁问都不给。'},
+  {ic:'i-qr',    t:'不扫描来源不明的二维码', d:'路边"扫码送礼"、群里"扫码领福利"、帖子里"扫码进群"，背后可能是钓鱼网站或木马下载。'},
+  {ic:'i-wifi',  t:'不在公共WiFi下转账支付', d:'免费WiFi可能被"钓鱼"或中间人劫持。涉及登录、支付、转账时，请切回移动网络。'},
+  {ic:'i-gift',  t:'不轻信天上掉馅饼', d:'高薪兼职、低价代购、内部渠道、稳赚投资——越诱人越要打个问号。先问问自己：凭什么轮到我？'}
+];
+
+function renderRules(el, list, cls){
+  el.innerHTML = list.map((r,i)=>`
+    <div class="rule ${cls}">
+      <button class="rule-h" type="button">
+        <span class="ico"><svg><use href="#${r.ic}"/></svg></span>
+        <span class="t"><span class="n">0${i+1}</span>${r.t}</span>
+        <svg class="arw" viewBox="0 0 24 24"><use href="#i-arrow"/></svg>
+      </button>
+      <div class="rule-b"><p>${r.d}</p></div>
+    </div>`).join('');
+  el.querySelectorAll('.rule-h').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const box = btn.parentElement;
+      const open = box.classList.contains('open');
+      el.querySelectorAll('.rule').forEach(r=>r.classList.remove('open'));
+      if(!open) box.classList.add('open');
+    });
+  });
+}
+renderRules(document.getElementById('doList'), DO, 'do');
+renderRules(document.getElementById('dontList'), DONT, 'dont');
+
+/* ================= 倒计时 ================= */
+const target = new Date(CFG.openAt.replace('T', ' ').replace(/-/g, '/')).getTime();
+function pad(n){return String(n).padStart(2,'0')}
+function tick(){
+  let s = Math.floor((target - Date.now())/1000);
+  if(s < 0) s = 0;
+  document.getElementById('cdD').textContent = pad(Math.floor(s/86400));
+  document.getElementById('cdH').textContent = pad(Math.floor(s%86400/3600));
+  document.getElementById('cdM').textContent = pad(Math.floor(s%3600/60));
+  document.getElementById('cdS').textContent = pad(s%60);
+}
+tick(); setInterval(tick, 1000);
+
+/* ================= 翻页 ================= */
+const deck = document.getElementById('deck');
+const pages = [...deck.querySelectorAll('.page')];
+const dotsBox = document.getElementById('dots');
+const pgNow = document.getElementById('pgNow');
+const hint = document.getElementById('hint');
+let cur = 0;
+
+pages.forEach((_,i)=>{
+  const d = document.createElement('i');
+  d.addEventListener('click',()=>go(i));
+  dotsBox.appendChild(d);
+});
+const dots = [...dotsBox.children];
+
+function go(i){
+  cur = Math.max(0, Math.min(pages.length-1, i));
+  deck.style.transform = `translate3d(${-cur*100}%,0,0)`;
+  dots.forEach((d,i)=>d.classList.toggle('on', i===cur));
+  pages.forEach((p,i)=>p.classList.toggle('cur', i===cur));
+  pgNow.textContent = pad(cur+1);
+  document.getElementById('navPrev').classList.toggle('show', cur>0);
+  document.getElementById('navNext').classList.toggle('show', cur<pages.length-1);
+  hint.style.opacity = cur===0 ? 1 : 0;
+}
+// 支持 ?p=1~6 直达指定屏（公众号菜单/自动回复可直链某一屏，如 /?p=4 直达五不要）
+// 注意：只读取、不改写 URL —— 改写会导致微信 JS-SDK 签名与当前地址不一致而失效
+const startPage = Math.min(pages.length, Math.max(1,
+  parseInt(new URLSearchParams(location.search).get('p') || '1', 10) || 1));
+go(startPage - 1);
+
+document.getElementById('navPrev').onclick = ()=>go(cur-1);
+document.getElementById('navNext').onclick = ()=>go(cur+1);
+
+let sx=0, sy=0, moved=false;
+deck.addEventListener('touchstart', e=>{ sx=e.touches[0].clientX; sy=e.touches[0].clientY; moved=false; }, {passive:true});
+deck.addEventListener('touchmove', e=>{
+  const dx = e.touches[0].clientX - sx, dy = e.touches[0].clientY - sy;
+  if(Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 12) moved = true;
+}, {passive:true});
+deck.addEventListener('touchend', e=>{
+  if(!moved) return;
+  const dx = e.changedTouches[0].clientX - sx;
+  if(dx < -40) go(cur+1); else if(dx > 40) go(cur-1);
+});
+let wheelLock = false;
+window.addEventListener('wheel', e=>{
+  if(wheelLock) return;
+  if(Math.abs(e.deltaX) > Math.abs(e.deltaY) && Math.abs(e.deltaX) > 18){
+    wheelLock = true; setTimeout(()=>wheelLock=false, 620);
+    go(cur + (e.deltaX > 0 ? 1 : -1));
+  }
+}, {passive:true});
+window.addEventListener('keydown', e=>{
+  if(e.key==='ArrowRight') go(cur+1);
+  if(e.key==='ArrowLeft') go(cur-1);
+});
+
+/* ================= Toast ================= */
+let tTimer;
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(tTimer); tTimer = setTimeout(()=>t.classList.remove('show'), 1800);
+}
+
+/* ================= 微信分享引导（首次进入弹出） ================= */
+(function(){
+  if(!IS_WX) return;
+  const KEY = 'wxguide_seen';
+  let seen = false;
+  try{ seen = localStorage.getItem(KEY) === '1'; }catch(e){}
+  const g = document.getElementById('wxGuide');
+  if(!seen) setTimeout(()=>g.classList.add('show'), 900);
+  const close = ()=>{
+    g.classList.remove('show');
+    try{ localStorage.setItem(KEY,'1'); }catch(e){}
+  };
+  document.getElementById('wxGuideClose').onclick = close;
+  g.addEventListener('click', e=>{ if(e.target === g) close(); });
+})();
+
+document.getElementById('btnRemind').onclick = ()=>{
+  const txt = `【${CFG.year}年${CFG.city}网络安全宣传周】开幕式：9月14日 09:00` +
+              `\n时间：9月14日—20日\n主题：${CFG.slogan}`;
+  if(navigator.clipboard) navigator.clipboard.writeText(txt).catch(()=>{});
+  toast('活动信息已复制，快去设置提醒');
+};
+
+/* ================= 答题 ================= */
+const QUIZ = [
+  {q:'收到"您的银行账户异常，请点击链接验证"的短信，正确的做法是？',
+   o:['立即点击链接查看详情','拨打银行官方客服电话核实','把短信转发给亲友','按提示输入卡号和密码'],
+   a:1, e:'银行不会用短信链接让你验证账户。凡是带链接的"官方通知"，一律通过官方App或客服电话核实。'},
+  {q:'下列密码中，安全性最高的是？',
+   o:['Jx#9k2!pQ','12345678','jixi2026','19900315'],
+   a:0, e:'强密码=足够长+大小写字母/数字/符号混合+不含个人信息，且每个账号各不相同。'},
+  {q:'在商场连上免费WiFi后，最不应该做的事是？',
+   o:['浏览新闻','看视频','登录手机银行转账','查询天气'],
+   a:2, e:'公共WiFi可能被劫持。涉及登录、支付、转账，请关闭WiFi使用移动网络。'},
+  {q:'关于二维码，说法正确的是？',
+   o:['有红包就可以扫','扫码前先确认来源，陌生二维码不扫','路边贴的都能扫','扫了顶多没用，没关系'],
+   a:1, e:'二维码本身看不出内容，可能指向钓鱼网站或自动下载木马。来源不明，坚决不扫。'},
+  {q:'保护重要数据最稳妥的方式是？',
+   o:['只存一份在电脑桌面','定期做"在线+离线+异地"备份','发一份给好友保存','打印出来收好'],
+   a:1, e:'备份的核心是"多份、异质、异地"，这样勒索病毒、设备损坏都不会让你一次性失去全部数据。'}
+];
+let qi = 0, score = 0, locked = false;
+const qText = document.getElementById('qText'), qOpts = document.getElementById('qOpts'),
+      qExp = document.getElementById('qExp'), quizBox = document.getElementById('quizBox'),
+      scoreBox = document.getElementById('scoreBox');
+
+function showQ(){
+  locked = false; qExp.className = 'explain';
+  const item = QUIZ[qi];
+  qText.innerHTML = `<em>Q${qi+1}.</em>${item.q}`;
+  qOpts.innerHTML = item.o.map((t,i)=>
+    `<div class="opt" data-i="${i}"><span class="k">${'ABCD'[i]}</span><span>${t}</span></div>`).join('');
+  qOpts.querySelectorAll('.opt').forEach(el=>{
+    el.onclick = ()=>{
+      if(locked) return; locked = true;
+      const pick = +el.dataset.i, right = item.a;
+      qOpts.querySelectorAll('.opt').forEach((o,i)=>{
+        o.classList.add('locked');
+        if(i===right) o.classList.add('right');
+        else if(i===pick) o.classList.add('wrong');
+      });
+      if(pick===right) score++;
+      qExp.innerHTML = `<b style="color:${pick===right?'#2fe3a0':'#ff5d73'}">${pick===right?'答对了':'答错了'}</b>　${item.e}`;
+      qExp.classList.add('show');
+      setTimeout(()=>{
+        if(qi < QUIZ.length-1){ qi++; showQ(); } else finish();
+      }, 1600);
+    };
+  });
+}
+function finish(){
+  quizBox.style.display = 'none';
+  scoreBox.style.display = 'block';
+  document.getElementById('scoreNum').textContent = score*20;
+  const say = [
+    '别灰心，把「五要五不要」再读一遍，下次稳过。',
+    '基础不错，还差一口气，重点看看易错项。',
+    '良好！日常生活基本能防住常见套路。',
+    '优秀！你已经超过大多数人。',
+    '满分！你就是身边人的网络安全守护者。'
+  ];
+  document.getElementById('scoreSay').textContent = say[score];
+}
+document.getElementById('btnAgain').onclick = ()=>{
+  qi=0; score=0; scoreBox.style.display='none'; quizBox.style.display='block'; showQ();
+};
+showQ();
+
+/* ================= 倡议书海报 ================= */
+let posterUrl = null;   // 保存 blob 地址，重复生成时释放
+document.getElementById('posterTip').textContent =
+  IS_WX ? '长按上方图片 → 保存图片 / 发送给朋友' : '长按（电脑端右键）保存图片后分享';
+
+document.getElementById('btnPoster').onclick = ()=>{
+  const name = (document.getElementById('nameInput').value || '').trim() || '网络安全守护者';
+  const wrap = document.getElementById('posterWrap');
+  const img  = document.getElementById('posterImg');
+  try{
+    const blob = dataURLtoBlob(drawPoster(name));
+    if(posterUrl) URL.revokeObjectURL(posterUrl);
+    posterUrl = URL.createObjectURL(blob);
+    img.src = posterUrl;                       // blob 地址在微信 iOS 长按保存成功率更高
+  }catch(e){
+    img.src = drawPoster(name);                // 兜底：直接用 dataURL
+  }
+  wrap.classList.add('show');
+  img.onload = ()=>setTimeout(()=>wrap.scrollIntoView({behavior:'smooth',block:'end'}), 60);
+  if(img.complete) setTimeout(()=>wrap.scrollIntoView({behavior:'smooth',block:'end'}), 60);
+};
+
+function dataURLtoBlob(dataUrl){
+  const [head, b64] = dataUrl.split(',');
+  const mime = (head.match(/:(.*?);/) || [,'image/png'])[1];
+  const bin = atob(b64), u8 = new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) u8[i] = bin.charCodeAt(i);
+  return new Blob([u8], {type:mime});
+}
+
+function drawPoster(name){
+  const W = 750, H = 1334, c = document.createElement('canvas');
+  c.width = W; c.height = H;
+  const x = c.getContext('2d');
+  const F = '"PingFang SC","Microsoft YaHei","Source Han Sans SC",sans-serif';
+
+  // 背景
+  let g = x.createLinearGradient(0,0,W,H);
+  g.addColorStop(0,'#0a1c38'); g.addColorStop(.5,'#0a1730'); g.addColorStop(1,'#04080f');
+  x.fillStyle = g; x.fillRect(0,0,W,H);
+  // 光晕
+  const glow = (cx,cy,r,col)=>{ const rg = x.createRadialGradient(cx,cy,0,cx,cy,r);
+    rg.addColorStop(0,col); rg.addColorStop(1,'rgba(0,0,0,0)'); x.fillStyle = rg;
+    x.globalAlpha = .5; x.beginPath(); x.arc(cx,cy,r,0,7); x.fill(); x.globalAlpha = 1; };
+  glow(120,180,340,'#1d6bff'); glow(660,520,320,'#00c2b3'); glow(400,1230,420,'#7a3cff');
+  // 网格
+  x.strokeStyle = 'rgba(120,180,255,.06)'; x.lineWidth = 1;
+  for(let i=0;i<W;i+=50){ x.beginPath(); x.moveTo(i,0); x.lineTo(i,H); x.stroke(); }
+  for(let j=0;j<H;j+=50){ x.beginPath(); x.moveTo(0,j); x.lineTo(W,j); x.stroke(); }
+  // 边框
+  x.strokeStyle = 'rgba(55,230,255,.35)'; x.lineWidth = 2;
+  x.strokeRect(38,38,W-76,H-76);
+  x.strokeStyle = 'rgba(55,230,255,.15)'; x.lineWidth = 1;
+  x.strokeRect(52,52,W-104,H-104);
+
+  // 顶部
+  x.textAlign = 'center';
+  x.fillStyle = '#8fe6ff'; x.font = `500 26px ${F}`;
+  x.fillText(`${CFG.year}年 ${CFG.city}`, W/2, 152);
+  x.fillStyle = '#ffffff'; x.font = `800 62px ${F}`;
+  x.fillText('网络安全宣传周', W/2, 232);
+  x.fillStyle = '#7fe9ff'; x.font = `600 30px ${F}`;
+  x.fillText(CFG.slogan, W/2, 292);
+
+  // 分隔
+  x.strokeStyle = 'rgba(255,255,255,.16)'; x.lineWidth = 1;
+  x.beginPath(); x.moveTo(150,332); x.lineTo(600,332); x.stroke();
+
+  // 主体卡片
+  card(82, 372, W-164, 720);
+  x.fillStyle = '#ffffff'; x.font = `800 46px ${F}`;
+  x.fillText('网络安全倡议书', W/2, 452);
+
+  x.textAlign = 'left';
+  const lx = 132, rx = 420, ty = 508;
+  x.font = `700 30px ${F}`; x.fillStyle = '#2fe3a0';
+  x.fillText('五 要', lx, ty);
+  x.fillStyle = '#ff5d73';
+  x.fillText('五 不 要', rx, ty);
+  x.font = `400 24px ${F}`; x.fillStyle = '#cfe0f7';
+  DO.forEach((r,i)=> wrap(r.t.replace(/^要/,''), lx, ty+52+i*76, 250, 34));
+  DONT.forEach((r,i)=> wrap(r.t, rx, ty+52+i*76, 250, 34));
+
+  // 倡议语
+  x.textAlign = 'center';
+  x.fillStyle = 'rgba(255,255,255,.10)'; x.fillRect(112, 990, W-224, 1);
+  x.fillStyle = '#8ea3c4'; x.font = `400 24px ${F}`;
+  x.fillText('我倡议', W/2, 1042);
+  wrapC('守好密码 · 辨清链接 · 护住信息', W/2, 1088, W-200, 40, `700 32px ${F}`, '#ffffff');
+  wrapC('做网络安全的践行者与传播者', W/2, 1132, W-200, 40, `700 32px ${F}`, '#ffffff');
+
+  // 倡议人（长名字自动缩小字号，避免超出海报边框）
+  x.fillStyle = '#7d90b0'; x.font = `400 22px ${F}`;
+  x.fillText('倡议人', W/2, 1176);
+  let fs = 40;
+  x.font = `800 ${fs}px ${F}`;
+  while(x.measureText(name).width > 320 && fs > 24){ fs -= 2; x.font = `800 ${fs}px ${F}`; }
+  x.fillStyle = '#ffc247';
+  x.fillText(name, W/2, 1216);
+  const uw = Math.min(160, x.measureText(name).width / 2 + 30);
+  x.strokeStyle = 'rgba(255,194,71,.4)';
+  x.beginPath(); x.moveTo(W/2-uw,1240); x.lineTo(W/2+uw,1240); x.stroke();
+
+  /* 落款 */
+  x.textAlign = 'center';
+  x.fillStyle = '#7d90b0'; x.font = `400 21px ${F}`;
+  x.fillText(CFG.org, W/2, 1286);
+  x.fillText(fmtDate(new Date()), W/2, 1318);
+
+  function card(px,py,pw,ph){
+    x.save();
+    x.fillStyle = 'rgba(255,255,255,.05)';
+    x.strokeStyle = 'rgba(255,255,255,.12)'; x.lineWidth = 1.5;
+    roundRect(px,py,pw,ph,24); x.fill(); x.stroke();
+    x.restore();
+  }
+  function roundRect(px,py,pw,ph,r){
+    x.beginPath();
+    x.moveTo(px+r,py); x.arcTo(px+pw,py,px+pw,py+ph,r); x.arcTo(px+pw,py+ph,px,py+ph,r);
+    x.arcTo(px,py+ph,px,py,r); x.arcTo(px,py,px+pw,py,r); x.closePath();
+  }
+  function wrap(text, px, py, maxW, lh){
+    let line = '', y = py;
+    for(const ch of text){
+      if(x.measureText(line+ch).width > maxW){ x.fillText(line, px, y); line = ch; y += lh; }
+      else line += ch;
+    }
+    x.fillText(line, px, y);
+  }
+  function wrapC(text, cx, py, maxW, lh, font, color){
+    x.font = font; x.fillStyle = color; x.textAlign = 'center';
+    let line='', y=py;
+    for(const ch of text){
+      if(x.measureText(line+ch).width > maxW){ x.fillText(line, cx, y); line=ch; y+=lh; }
+      else line += ch;
+    }
+    x.fillText(line, cx, y);
+  }
+  function fmtDate(d){
+    return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
+  }
+  return c.toDataURL('image/png');
+}
+
+/* ================= 微信 JS-SDK：自定义分享卡片 =================
+   作用：把默认的"链接气泡"换成带标题、描述、缩略图的分享卡片。
+   前提：① 页面部署在【已备案 + HTTPS】的域名下
+        ② 公众号后台配置了「JS接口安全域名」
+        ③ 后端提供签名接口（见 server.py 的 /api/wx-sign）
+   任一条件不满足都不会报错，只是分享时退回默认样式。
+================================================================== */
+(function initWxShare(){
+  if(!IS_WX || !CFG.wx.sdkEnabled) return;
+
+  const abs = p => new URL(p, location.href).href;
+  const pageUrl = location.href.split('#')[0];              // 微信要求：不含 # 之后的完整 URL
+  const share = {
+    title : CFG.wx.shareTitle,
+    desc  : CFG.wx.shareDesc,
+    link  : pageUrl,
+    imgUrl: abs(CFG.wx.shareImg)
+  };
+
+  function applyShare(){
+    const w = window.wx;
+    if(!w) return;
+    const call = (fn, obj)=>{ try{ if(typeof w[fn] === 'function') w[fn](obj); }catch(e){} };
+    call('updateAppMessageShareData', share);                                  // 新版：好友/群
+    call('updateTimelineShareData', {title:share.title, link:share.link, imgUrl:share.imgUrl}); // 新版：朋友圈
+    call('onMenuShareAppMessage', share);                                      // 旧版兜底
+    call('onMenuShareTimeline', {title:share.title, link:share.link, imgUrl:share.imgUrl});
+    call('onMenuShareQQ', share);
+  }
+
+  function loadJweixin(cb){
+    if(window.wx) return cb();
+    const s = document.createElement('script');
+    s.src = 'https://res.wx.qq.com/open/js/jweixin-1.6.0.js';
+    s.onload = cb;
+    s.onerror = ()=>console.warn('[wx] jweixin 加载失败，分享将使用默认样式');
+    document.head.appendChild(s);
+  }
+
+  loadJweixin(()=>{
+    const signApi = abs(CFG.wx.signUrl) + '?url=' + encodeURIComponent(pageUrl);
+    fetch(signApi, {cache:'no-store'})
+      .then(r=>r.ok ? r.json() : Promise.reject(r.status))
+      .then(cfg=>{
+        if(!cfg || !cfg.signature) throw new Error('签名接口返回异常');
+        window.wx.config({
+          debug: false,
+          appId: cfg.appId || cfg.appid,
+          timestamp: Number(cfg.timestamp),
+          nonceStr: cfg.nonceStr || cfg.noncestr,
+          signature: cfg.signature,
+          jsApiList: ['updateAppMessageShareData','updateTimelineShareData',
+                      'onMenuShareAppMessage','onMenuShareTimeline','onMenuShareQQ']
+        });
+        window.wx.ready(applyShare);
+        window.wx.error(err=>console.warn('[wx] config 失败：', err));   // 常见原因：域名未加入 JS接口安全域名
+      })
+      .catch(err=>console.warn('[wx] 获取签名失败，分享将使用默认样式：', err));
+  });
+})();
+</script>
+</body>
+</html>
